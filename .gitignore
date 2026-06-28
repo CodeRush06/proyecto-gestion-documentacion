@@ -1,0 +1,11 @@
+# Credenciales y configuración local
+.env
+config.php
+
+# Datos de la base de datos de Docker
+.docker-data/
+mysql_data/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
