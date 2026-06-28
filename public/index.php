@@ -10,7 +10,7 @@
     <div class="container-fluid">
          <header class="row bg-white p-4 justify-content-center"> 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"> <img src="logo_rgb_200x100.png"></a>
+  <a class="navbar-brand" href="#"> <img src="assets/logo_rgb_200x100.png"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -25,7 +25,7 @@
 
          </header>
         <div class="row">
-                <aside class="col-md-3 text-white p-4 bg-info d-flex flex-column align-items-center"> <h1 class="h3 text-center m-1">Documentación de "Juan"</h1>  <img src="qr-code.png" class="img-thumbnail mx-auto" width="200px" length="200px">
+                <aside class="col-md-3 text-white p-4 bg-info d-flex flex-column align-items-center"> <h1 class="h3 text-center m-1">Documentación de "Juan"</h1>  <img src="assets/qr-code.png" class="img-thumbnail mx-auto" width="200px" length="200px">
 
                 </aside>
                 <main class=" col-md-9 bg-white"><h1 class="h3">Panel de Administración - Resultados de búsqueda "Juan"</h1>
