@@ -23,8 +23,6 @@ CREATE TABLE `ENCUESTA` (
   `id_encuesta` integer PRIMARY KEY AUTO_INCREMENT,
   `titulo` varchar(100) NOT NULL,
   `descripcion` text,
-  `fecha_inicio` date,
-  `fecha_fin` date,
   `estado` varchar(30) NOT NULL,
   `id_tipo_encuesta` integer NOT NULL,
   `id_funcionario_creador` integer NOT NULL
