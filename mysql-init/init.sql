@@ -97,8 +97,8 @@ CREATE TABLE `DOCUMENTO` (
   `fecha_creacion` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `fecha_actualizacion` datetime,
   `estado` varchar(30) NOT NULL,
-  `id_subcategoria` integer NOT NULL,
-  `id_funcionario_creador` integer NOT NULL
+  `id_subcategoria` integer NULL,
+  `id_funcionario_creador` integer NULL
 );
 
 CREATE TABLE `ACCESO_DOCUMENTO` (
