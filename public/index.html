@@ -4,80 +4,53 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Radiocardiografia - Inicio</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <style>
-      body {
-        margin: 0;
-        background-color: #ffffff;
-        overflow-x: hidden;
+      .app-layout {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        height: 100vh;
       }
-
-      .slide-button {
-        border: none;
-        background: transparent;
-        width: 100%;
-        padding: 0;
-        outline: none;
-        box-shadow: none;
-        -webkit-tap-highlight-color: transparent;
-        transform: none !important;
-        transition: none !important;
-      }
-      .slide-button:focus, 
-      .slide-button:active, 
-      .slide-button:hover {
-        outline: none !important;
-        box-shadow: none !important;
-        transform: none !important;
-        background: transparent !important;
+   
+      .cards-grid {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        gap: 1rem;
+        padding: 1rem;
+        height: 100%;
       }
     </style>
   </head>
-  <body class="d-flex flex-column min-vh-100">
+  <body class="bg-white m-0 app-layout">
     
     <header class="shadow-sm py-2 px-3">
-      <div class="d-flex align-items-center justify-content-between gap-2">
-        <a class="navbar-brand m-0" href="#">
-          <img src="https://hc.edu.uy/images/imagenesarticulos/Logo_Hc.jpg" style="max-width: 150px; height: auto;" alt="Hospital de Clinicas">
-        </a>
-        <form class="d-flex flex-grow-1" role="search">
-          <input class="form-control rounded-pill text-muted" type="search" placeholder="Buscar" aria-label="Buscar" style="border: 2px solid #ccc;"/>
-        </form>
+      <div class="row align-items-center g-2">
+        <div class="col-auto">
+          <a class="navbar-brand m-0" href="https://hc.edu.uy/">
+            <img src="https://hc.edu.uy/images/imagenesarticulos/Logo_Hc.jpg" alt="Hospital de Clinicas" style="max-width: 150px;">
+          </a>
+        </div>
+        <div class="col">
+          <form role="search">
+            <input class="form-control rounded-pill border-2" type="search" placeholder="Buscar" aria-label="Buscar">
+          </form>
+        </div>
       </div>
     </header>
 
-    <main class="flex-grow-1 container-fluid py-4 d-flex flex-column">
-      <div class="row g-4 justify-content-center align-items-stretch flex-grow-1">
-        
-        <div class="col-12 col-md-12 col-lg-12 d-flex">
-          <button class="slide-button d-flex" onclick="location.href='seleccionarD.html'">
-            <div class="card border-1 shadow-sm bg-transparent text-center w-100 h-100 d-flex flex-column align-items-center justify-content-center p-4">
-              <img src="assets/documento.png" class="mx-auto img-fluid" alt="Documentos" style="max-width: 120px; height: auto;">
-              <div class="card-body pt-3">
-                <h5 class="card-title fw-bold text-dark fs-4 m-0" id="Documentos">Documentos</h5>
-              </div>
-            </div>
-          </button>
-        </div>
+    <main class="cards-grid">
+      <button onclick="location.href='seleccionarD.php'" href="seleccionarD.html" class="card border shadow-sm text-center text-decoration-none p-4 h-100 justify-content-center">
+        <img src="Logo/Documento.png" alt="Documentos" class="mx-auto" style="max-width: 120px;">
+        <h5 class="card-title fw-bold text-dark fs-4 m-0 pt-3" id="Documentos">Documentos</h5>
+      </button>
 
-        <div class="col-12 col-md-12 col-lg-12 d-flex">
-          <button class="slide-button d-flex" onclick="location.href='seleccionarF.html'">
-            <div class="card border-1 shadow-sm bg-transparent text-center w-100 h-100 d-flex flex-column align-items-center justify-content-center p-4">
-              <img src="assets/formulario.png" class="mx-auto img-fluid my-2" alt="Formulario" style="max-width: 120px; height: auto;">
-              <div class="card-body pt-3">
-                <h5 class="card-title fw-bold text-dark fs-4 m-0" id="Formulario">Formulario</h5>
-               
-              </div>
-            </div>
-          </button>
-        </div>
-
-      </div>
+      <button onclick="location.href='seleccionarF.php'" href="seleccionarF.html" class="card border shadow-sm text-center text-decoration-none p-4 h-100 justify-content-center">
+        <img src="Logo/Formulario.png" alt="Formulario" class="mx-auto" style="max-width: 120px;">
+        <h5 class="card-title fw-bold text-dark fs-4 m-0 pt-3" id="Formulario">Formulario</h5>
+      </button>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
