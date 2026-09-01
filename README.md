@@ -20,7 +20,7 @@ Dentro de un hospital, facilitará a los medicos y administradores a gestionar s
 ¿Como se usa?
 
 
-Esta planeado para ser usado mediante un navegador en un sitio web, y mediante ella los doctores o administradores podrán interactuar con la informacion presente de los pacientes.
+Esta planeado para ser usado mediante un navegador en un sitio web, y mediante ella los doctores o administradores podrán interactuar con la información presente en el sistema o publicar archivos propios.
 
 
 ¿Quienes pueden contribuir con este Proyecto?
@@ -28,3 +28,11 @@ Esta planeado para ser usado mediante un navegador en un sitio web, y mediante e
 
 Este proyecto esta intencionado como proyecto de egreso de estudiantes de tercer año 2026, por ende solo los estudiantes del mismo equipo de proyecto (CodeRush) pueden contribuir al trabajo. 
 Los docentes de la institucion pueden contribuir mediante comentarios o sugerencias.
+
+
+
+Manual de uso
+Los administradores/Medicos acceden a Panel de administradores mediante su nombre y contraseña, al iniciar sesión  pueden visualizar los archivos ya publicados y publicar los suyos/crearlos. Por ahora solo se permiten estas dos funcionalidades.
+
+Para hacer pruebas, ingresar con el usuario:test contraseña:123.
+
