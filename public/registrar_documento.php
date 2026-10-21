@@ -12,10 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_categoria    = $_POST["id_categoria"] ?? "";
     $id_subcategoria = $_POST["id_subcategoria"] ?? "";
     $estado = trim($_POST["estado"] ?? "activo");
-
-    // TEMPORAL: hasta que exista login, usamos un id fijo para pruebas.
-    // TODO: reemplazar por $_SESSION["id_funcionario"] una vez armado el login.
-    $id_funcionario_creador = 1;
+    $id_funcionario = $_SESSION["id_funcionario"]
 
     // Según lo que eligió el usuario, solo uno de los dos queda activo
     if ($tipo_destino === "categoria") {
@@ -40,9 +37,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $archivo = $_FILES["archivo"];
 
+
+        // Borrar
+        $ancho_alto = "300x300";
+$url_codificada = urlencode($archivo);
+        $codigo_qr = "https://qrserver.com{$ancho_alto}&data={$url_codificada}";
         $tiposPermitidos = ["application/pdf", "image/jpeg", "image/png"];
         $tipoReal = mime_content_type($archivo["tmp_name"]);
-
+        // hasta aqui
         if (!in_array($tipoReal, $tiposPermitidos)) {
             $mensaje = "Tipo de archivo no permitido";
         } else {
@@ -56,9 +58,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 try {
                     $sql = "INSERT INTO documento 
-                            (titulo, descripcion, archivo_url, fecha_creacion, estado, id_categoria, id_subcategoria, id_funcionario_creador) 
+                            (titulo, descripcion, archivo_url, fecha_creacion, estado, id_categoria, id_subcategoria, id_funcionario_creador, codigo_qr) 
                             VALUES 
-                            (:titulo, :descripcion, :archivo_url, NOW(), :estado, :id_categoria, :id_subcategoria, :id_funcionario_creador)";
+                            (:titulo, :descripcion, :archivo_url, NOW(), :estado, :id_categoria, :id_subcategoria, :id_funcionario_creador :codigo_qr)";
                     $stmt = $pdo->prepare($sql);
                     $stmt->execute([
                         "titulo"                 => $titulo,
@@ -68,6 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         "id_categoria"           => $id_categoria,
                         "id_subcategoria"        => $id_subcategoria,
                         "id_funcionario_creador" => $id_funcionario_creador
+                                   "codigo_qr" => $codigo_qr
                     ]);
                     $mensaje = "Documento registrado correctamente";
                 } catch (PDOException $e) {
