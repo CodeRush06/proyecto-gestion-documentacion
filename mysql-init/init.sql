@@ -139,7 +139,7 @@ INSERT INTO `TIPO_ENCUESTA` (`id_tipo_encuesta`, `nombre_tipo`, `descripcion`, `
 (1, 'Satisfacción General', 'Evaluación de atención al paciente', TRUE),
 (2, 'Seguimiento Médico', 'Monitoreo posterior a consulta o procedimiento', TRUE);
 
-INSERT INTO `CATEGORIA_DOCUMENTO` (`id_categoria`, `nombre_categoria`, `descripcion`, `archivo_url`, `estado_activo`, `id_categoria_padre`) VALUES
+INSERT INTO `CATEGORIA_DOCUMENTO` (`id_categoria`, `nombre_categoria`, `descripcion`, `archivo_url`, `estado_activo) VALUES
 (1, 'Consentimientos Informados', 'Documentos legales de autorización', '/assets/img/cats/consent.png', TRUE, NULL),
 (2, 'Guías de Cuidados', 'Instructivos de recuperación e higiene', '/assets/img/cats/guias.png', TRUE, NULL),
 (3, 'Consentimiento Quirúrgico', 'Autorización para intervenciones de cirugía', '/assets/img/cats/cirugia.png', TRUE, 1),
