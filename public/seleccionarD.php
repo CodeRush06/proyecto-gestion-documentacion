@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Seleccionar Especialidad</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <?php require "listar_cat_documentos.php"; ?>
+    <?php require "../src/controllers/documento/listar_cat_documentos.php"; ?>
     <style>
       body, html { height: 100%; margin: 0; background: #fff; overflow-x: hidden; }
       .slide-button {
