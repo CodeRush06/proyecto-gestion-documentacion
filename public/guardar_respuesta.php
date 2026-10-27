@@ -1,6 +1,6 @@
 <?php
 session_start();
-require __DIR__ . "/conectar.php";
+require __DIR__ .  '/../src/config/database.php';
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     header("Location: index.php");
