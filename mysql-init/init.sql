@@ -106,6 +106,7 @@ CREATE TABLE IF NOT EXISTS `DOCUMENTO` (
   `id_funcionario_creador` integer NULL
 );
 
+DROP INDEX IF EXISTS `PREGUNTA_index_0` ON `PREGUNTA`;
 CREATE UNIQUE INDEX `PREGUNTA_index_0` ON `PREGUNTA` (`id_encuesta`, `orden`);
 
 -- Claves foráneas
