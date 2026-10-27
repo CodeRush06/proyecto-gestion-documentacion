@@ -94,21 +94,11 @@ CREATE TABLE `DOCUMENTO` (
   `titulo` varchar(200) NOT NULL,
   `descripcion` text,
   `archivo_url` varchar(500) NOT NULL,
-  `codigo_qr` varchar(225),
   `fecha_creacion` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `fecha_actualizacion` datetime,
   `estado` varchar(30) NOT NULL,
   `id_subcategoria` integer NULL,
   `id_funcionario_creador` integer NULL
-);
-
-CREATE TABLE `ACCESO_DOCUMENTO` (
-  `id_acceso` integer PRIMARY KEY AUTO_INCREMENT,
-  `id_documento` integer NOT NULL,
-  `id_paciente` integer NOT NULL,
-  `fecha_acceso` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `dispositivo` varchar(100),
-  `ip_address` varchar(45)
 );
 
 CREATE UNIQUE INDEX `PREGUNTA_index_0` ON `PREGUNTA` (`id_encuesta`, `orden`);
