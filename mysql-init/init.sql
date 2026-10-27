@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `PACIENTE` (
   `apellido` varchar(100) NOT NULL,
   `email` varchar(100),
   `telefono` varchar(20),
-  `fecha_registro` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `fecha_registro` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `estado_activo` boolean NOT NULL DEFAULT true
 
 );
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `PREGUNTA` (
   `texto_pregunta` text NOT NULL,
   `tipo_pregunta` varchar(50) NOT NULL,
   `orden` integer NOT NULL,
-  `obligatoria` boolean NOT NULL DEFAULT false
+  `obligatoria` boolean NOT NULL DEFAULT false,
   `estado_activo` boolean NOT NULL DEFAULT true
 
 );
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `OPCION_RESPUESTA` (
   `id_opcion` integer PRIMARY KEY AUTO_INCREMENT,
   `id_pregunta` integer NOT NULL,
   `texto_opcion` varchar(200) NOT NULL,
-  `valor` varchar(100)
+  `valor` varchar(100),
   `estado_activo` boolean NOT NULL DEFAULT true
 
 );
@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `DOCUMENTO` (
   `archivo_url` varchar(500) NOT NULL,
   `fecha_creacion` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `fecha_actualizacion` datetime,
-  `estado_activo` boolean NOT NULL DEFAULT true
+  `estado_activo` boolean NOT NULL DEFAULT true,
   `id_subcategoria` integer NULL,
   `id_categoria` integer NULL,
   `id_funcionario_creador` integer NULL
