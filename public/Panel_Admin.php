@@ -35,14 +35,14 @@
         </div>
       </div>
     </header>
-    <?php 
-    require "conectar.php";
-    require "listar_cat_documentos.php"; 
-    require "listar_subcategorias.php";
-    require "listar_cat_encuestas.php"; 
-    require "titulos_documento.php"; 
-    require "listar_encuestas.php";
-    require "listar_respuestas.php";
+      <?php 
+    require __DIR__ . "/../src/config/database.php";
+    require "../src/controllers/documento/listar_cat_documentos.php";
+    require "../src/controllers/encuesta/listar_cat_encuestas.php";
+    require "../src/controllers/documento/titulos_documento.php";
+    require "../src/controllers/encuesta/listar_encuestas.php";
+    require "../src/controllers/encuesta/listar_respuestas.php"; 
+      require "../src/controllers/documento/listar_subcategorias.php"; 
     ?>
     <main class="cards-grid">
       <!--CATEGORIA_DOCUMENTO -->
