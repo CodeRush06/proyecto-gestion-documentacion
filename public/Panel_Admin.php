@@ -37,13 +37,12 @@
     </header>
       <?php 
     require __DIR__ . "/../src/config/database.php";
-    require "../src/controllers/documento/listar_cat_documentos.php";
-    require "../src/controllers/encuesta/listar_cat_encuestas.php";
     require "../src/controllers/documento/titulos_documento.php";
-    require "../src/controllers/encuesta/listar_encuestas.php";
-    require "../src/controllers/encuesta/listar_respuestas.php"; 
-      require "../src/controllers/documento/listar_subcategorias.php"; 
+    require "../src/controllers/documento/listar_cat_documentos.php";
+    require "../src/controllers/documento/listar_subcategorias.php"; 
     ?>
+
+
     <main class="cards-grid">
       <!--CATEGORIA_DOCUMENTO -->
       <div class="card border shadow-sm text-center text-decoration-none p-4 h-100 justify-content-center">
@@ -238,8 +237,15 @@ function mostrarDestino(tipo) {
 }
 </script>
       </div>
-
       </div>
+
+
+          
+    <?php
+    require "../src/controllers/encuesta/listar_cat_encuestas.php";
+    require "../src/controllers/encuesta/listar_encuestas.php";
+    require "../src/controllers/encuesta/listar_respuestas.php"; 
+    ?>
               <!-- CAT FORMULARIO (TIPO_ENCUESTA) -->
 <div class="card border shadow-sm text-center text-decoration-none p-4 h-100 justify-content-center">
   <img src="Logo/Formulario.png" alt="Formulario" class="mx-auto" style="max-width: 120px;">
