@@ -16,7 +16,8 @@ CREATE TABLE `ADMINISTRATIVO` (
   `email` varchar(150) UNIQUE NOT NULL,
   `usuario` varchar(50) UNIQUE NOT NULL,
   `contrasena` varchar(200) NOT NULL,
-  `fecha_registro` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `fecha_registro` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `es_medico` boolean NOT NULL DEFAULT false
 );
 
 CREATE TABLE `ENCUESTA` (
