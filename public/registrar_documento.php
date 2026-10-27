@@ -38,13 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $archivo = $_FILES["archivo"];
 
 
-        // Borrar
-        $ancho_alto = "300x300";
-$url_codificada = urlencode($archivo);
-        $codigo_qr = "https://qrserver.com{$ancho_alto}&data={$url_codificada}";
-        $tiposPermitidos = ["application/pdf", "image/jpeg", "image/png"];
-        $tipoReal = mime_content_type($archivo["tmp_name"]);
-        // hasta aqui
         if (!in_array($tipoReal, $tiposPermitidos)) {
             $mensaje = "Tipo de archivo no permitido";
         } else {
@@ -70,7 +63,6 @@ $url_codificada = urlencode($archivo);
                         "id_categoria"           => $id_categoria,
                         "id_subcategoria"        => $id_subcategoria,
                         "id_funcionario_creador" => $id_funcionario_creador
-                                   "codigo_qr" => $codigo_qr
                     ]);
                     $mensaje = "Documento registrado correctamente";
                 } catch (PDOException $e) {
