@@ -2,14 +2,14 @@
 CREATE DATABASE IF NOT EXISTS `MODULO1`;
 USE `MODULO1`;
 
-CREATE TABLE `TIPO_ENCUESTA` (
+CREATE TABLE IF NOT EXISTS `TIPO_ENCUESTA` (
   `id_tipo_encuesta` integer PRIMARY KEY AUTO_INCREMENT,
   `nombre_tipo` varchar(100) NOT NULL,
   `descripcion` text,
   `estado_activo` boolean NOT NULL DEFAULT true
 );
 
-CREATE TABLE `ADMINISTRATIVO` (
+CREATE TABLE IF NOT EXISTS `ADMINISTRATIVO` (
   `id_funcionario` integer PRIMARY KEY AUTO_INCREMENT,
   `nombre` varchar(100) NOT NULL,
   `apellido` varchar(100) NOT NULL,
@@ -17,19 +17,23 @@ CREATE TABLE `ADMINISTRATIVO` (
   `usuario` varchar(50) UNIQUE NOT NULL,
   `contrasena` varchar(200) NOT NULL,
   `fecha_registro` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `es_medico` boolean NOT NULL DEFAULT false
+  `es_medico` boolean NOT NULL DEFAULT false,
+  `estado_activo` boolean NOT NULL DEFAULT true
+
 );
 
-CREATE TABLE `ENCUESTA` (
+CREATE TABLE IF NOT EXISTS `ENCUESTA` (
   `id_encuesta` integer PRIMARY KEY AUTO_INCREMENT,
   `titulo` varchar(100) NOT NULL,
   `descripcion` text,
   `estado` varchar(30) NOT NULL,
   `id_tipo_encuesta` integer NOT NULL,
-  `id_funcionario_creador` integer NOT NULL
+  `id_funcionario_creador` integer NOT NULL,
+  `estado_activo` boolean NOT NULL DEFAULT true
+
 );
 
-CREATE TABLE `PACIENTE` (
+CREATE TABLE IF NOT EXISTS `PACIENTE` (
   `id_paciente` integer PRIMARY KEY AUTO_INCREMENT,
   `cedula` varchar(20) UNIQUE NOT NULL,
   `nombre` varchar(100) NOT NULL,
@@ -37,25 +41,31 @@ CREATE TABLE `PACIENTE` (
   `email` varchar(100),
   `telefono` varchar(20),
   `fecha_registro` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `estado_activo` boolean NOT NULL DEFAULT true
+
 );
 
-CREATE TABLE `PREGUNTA` (
+CREATE TABLE IF NOT EXISTS `PREGUNTA` (
   `id_pregunta` integer PRIMARY KEY AUTO_INCREMENT,
   `id_encuesta` integer NOT NULL,
   `texto_pregunta` text NOT NULL,
   `tipo_pregunta` varchar(50) NOT NULL,
   `orden` integer NOT NULL,
   `obligatoria` boolean NOT NULL DEFAULT false
+  `estado_activo` boolean NOT NULL DEFAULT true
+
 );
 
-CREATE TABLE `OPCION_RESPUESTA` (
+CREATE TABLE IF NOT EXISTS `OPCION_RESPUESTA` (
   `id_opcion` integer PRIMARY KEY AUTO_INCREMENT,
   `id_pregunta` integer NOT NULL,
   `texto_opcion` varchar(200) NOT NULL,
   `valor` varchar(100)
+  `estado_activo` boolean NOT NULL DEFAULT true
+
 );
 
-CREATE TABLE `RESPUESTA_ENCUESTA` (
+CREATE TABLE IF NOT EXISTS `RESPUESTA_ENCUESTA` (
   `id_respuesta` integer PRIMARY KEY AUTO_INCREMENT,
   `id_encuesta` integer NOT NULL,
   `id_paciente` integer NOT NULL,
@@ -63,7 +73,7 @@ CREATE TABLE `RESPUESTA_ENCUESTA` (
   `anonima` boolean NOT NULL DEFAULT false
 );
 
-CREATE TABLE `RESPUESTA_DETALLE` (
+CREATE TABLE IF NOT EXISTS `RESPUESTA_DETALLE` (
   `id_detalle` integer PRIMARY KEY AUTO_INCREMENT,
   `id_respuesta_encuesta` integer NOT NULL,
   `id_pregunta` integer NOT NULL,
@@ -71,7 +81,7 @@ CREATE TABLE `RESPUESTA_DETALLE` (
   `texto_libre` text
 );
 
-CREATE TABLE `CATEGORIA_DOCUMENTO` (
+CREATE TABLE IF NOT EXISTS `CATEGORIA_DOCUMENTO` (
   `id_categoria` integer PRIMARY KEY AUTO_INCREMENT,
   `nombre_categoria` varchar(100) UNIQUE NOT NULL,
   `descripcion` text,
@@ -79,7 +89,7 @@ CREATE TABLE `CATEGORIA_DOCUMENTO` (
   `archivo_url` varchar(500) NOT NULL
 );
 
-CREATE TABLE `SUBCATEGORIA_DOCUMENTO` (
+CREATE TABLE IF NOT EXISTS `SUBCATEGORIA_DOCUMENTO` (
   `id_subcategoria` integer PRIMARY KEY AUTO_INCREMENT,
   `id_categoria` integer NOT NULL,
   `nombre_subcategoria` varchar(100) NOT NULL,
@@ -89,14 +99,14 @@ CREATE TABLE `SUBCATEGORIA_DOCUMENTO` (
     REFERENCES `CATEGORIA_DOCUMENTO` (`id_categoria`)
 );
 
-CREATE TABLE `DOCUMENTO` (
+CREATE TABLE IF NOT EXISTS `DOCUMENTO` (
   `id_documento` integer PRIMARY KEY AUTO_INCREMENT,
   `titulo` varchar(200) NOT NULL,
   `descripcion` text,
   `archivo_url` varchar(500) NOT NULL,
   `fecha_creacion` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `fecha_actualizacion` datetime,
-  `estado` varchar(30) NOT NULL,
+  `estado_activo` boolean NOT NULL DEFAULT true
   `id_subcategoria` integer NULL,
   `id_categoria` integer NULL,
   `id_funcionario_creador` integer NULL
