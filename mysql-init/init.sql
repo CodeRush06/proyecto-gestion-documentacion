@@ -1,4 +1,3 @@
--- Aqui va el init.sql
 CREATE DATABASE IF NOT EXISTS `MODULO1`;
 USE `MODULO1`;
 
@@ -19,7 +18,6 @@ CREATE TABLE IF NOT EXISTS `ADMINISTRATIVO` (
   `fecha_registro` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `es_medico` boolean NOT NULL DEFAULT false,
   `estado_activo` boolean NOT NULL DEFAULT true
-
 );
 
 CREATE TABLE IF NOT EXISTS `ENCUESTA` (
@@ -30,7 +28,6 @@ CREATE TABLE IF NOT EXISTS `ENCUESTA` (
   `id_tipo_encuesta` integer NOT NULL,
   `id_funcionario_creador` integer NOT NULL,
   `estado_activo` boolean NOT NULL DEFAULT true
-
 );
 
 CREATE TABLE IF NOT EXISTS `PACIENTE` (
@@ -42,7 +39,6 @@ CREATE TABLE IF NOT EXISTS `PACIENTE` (
   `telefono` varchar(20),
   `fecha_registro` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `estado_activo` boolean NOT NULL DEFAULT true
-
 );
 
 CREATE TABLE IF NOT EXISTS `PREGUNTA` (
@@ -53,7 +49,6 @@ CREATE TABLE IF NOT EXISTS `PREGUNTA` (
   `orden` integer NOT NULL,
   `obligatoria` boolean NOT NULL DEFAULT false,
   `estado_activo` boolean NOT NULL DEFAULT true
-
 );
 
 CREATE TABLE IF NOT EXISTS `OPCION_RESPUESTA` (
@@ -62,7 +57,6 @@ CREATE TABLE IF NOT EXISTS `OPCION_RESPUESTA` (
   `texto_opcion` varchar(200) NOT NULL,
   `valor` varchar(100),
   `estado_activo` boolean NOT NULL DEFAULT true
-
 );
 
 CREATE TABLE IF NOT EXISTS `RESPUESTA_ENCUESTA` (
@@ -114,6 +108,7 @@ CREATE TABLE IF NOT EXISTS `DOCUMENTO` (
 
 CREATE UNIQUE INDEX `PREGUNTA_index_0` ON `PREGUNTA` (`id_encuesta`, `orden`);
 
+-- Claves foráneas
 ALTER TABLE `ENCUESTA` ADD FOREIGN KEY (`id_tipo_encuesta`) REFERENCES `TIPO_ENCUESTA` (`id_tipo_encuesta`);
 ALTER TABLE `ENCUESTA` ADD FOREIGN KEY (`id_funcionario_creador`) REFERENCES `ADMINISTRATIVO` (`id_funcionario`);
 
@@ -129,9 +124,10 @@ ALTER TABLE `RESPUESTA_DETALLE` ADD FOREIGN KEY (`id_pregunta`) REFERENCES `PREG
 ALTER TABLE `RESPUESTA_DETALLE` ADD FOREIGN KEY (`id_opcion`) REFERENCES `OPCION_RESPUESTA` (`id_opcion`);
 
 ALTER TABLE `DOCUMENTO` ADD FOREIGN KEY (`id_subcategoria`) REFERENCES `SUBCATEGORIA_DOCUMENTO` (`id_subcategoria`);
+ALTER TABLE `DOCUMENTO` ADD FOREIGN KEY (`id_categoria`) REFERENCES `CATEGORIA_DOCUMENTO` (`id_categoria`);
 ALTER TABLE `DOCUMENTO` ADD FOREIGN KEY (`id_funcionario_creador`) REFERENCES `ADMINISTRATIVO` (`id_funcionario`);
 
--- datos de prueba
+-- Datos de prueba corregidos (separando categorías de subcategorías lógicamente)
 INSERT INTO `ADMINISTRATIVO` (`id_funcionario`, `nombre`, `apellido`, `email`, `usuario`, `contrasena`, `fecha_registro`) VALUES
 (1, 'Admin', 'Sistema', 'admin@hospital.com', 'admin', '$2a$12$eImiTXuWVxfM37uY4JANjOL.8/OHqA4/y1z2H.g0B5eXNqXz9G', NOW());
 
@@ -139,11 +135,15 @@ INSERT INTO `TIPO_ENCUESTA` (`id_tipo_encuesta`, `nombre_tipo`, `descripcion`, `
 (1, 'Satisfacción General', 'Evaluación de atención al paciente', TRUE),
 (2, 'Seguimiento Médico', 'Monitoreo posterior a consulta o procedimiento', TRUE);
 
-INSERT INTO `CATEGORIA_DOCUMENTO` (`id_categoria`, `nombre_categoria`, `descripcion`, `archivo_url`, `estado_activo) VALUES
-(1, 'Consentimientos Informados', 'Documentos legales de autorización', '/assets/img/cats/consent.png', TRUE, NULL),
-(2, 'Guías de Cuidados', 'Instructivos de recuperación e higiene', '/assets/img/cats/guias.png', TRUE, NULL),
-(3, 'Consentimiento Quirúrgico', 'Autorización para intervenciones de cirugía', '/assets/img/cats/cirugia.png', TRUE, 1),
-(4, 'Cuidados Post-Operatorios', 'Instrucciones para cuidados en casa', '/assets/img/cats/postop.png', TRUE, 2);
+-- Categorías (5 columnas)
+INSERT INTO `CATEGORIA_DOCUMENTO` (`id_categoria`, `nombre_categoria`, `descripcion`, `archivo_url`, `estado_activo`) VALUES
+(1, 'Consentimientos Informados', 'Documentos legales de autorización', '/assets/img/cats/consent.png', TRUE),
+(2, 'Guías de Cuidados', 'Instructivos de recuperación e higiene', '/assets/img/cats/guias.png', TRUE);
+
+-- Subcategorías (asociadas a las categorías anteriores)
+INSERT INTO `SUBCATEGORIA_DOCUMENTO` (`id_subcategoria`, `id_categoria`, `nombre_subcategoria`, `descripcion`, `estado_activo`) VALUES
+(1, 1, 'Consentimiento Quirúrgico', 'Autorización para intervenciones de cirugía', TRUE),
+(2, 2, 'Cuidados Post-Operatorios', 'Instrucciones para cuidados en casa', TRUE);
 
 INSERT INTO `PACIENTE` (`id_paciente`, `cedula`, `nombre`, `apellido`, `email`, `telefono`, `fecha_registro`) VALUES
 (1, '12345678', 'Juan', 'Pérez', 'juan.perez@example.com', '+59899123456', NOW());
