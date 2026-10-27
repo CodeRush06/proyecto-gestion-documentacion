@@ -9,6 +9,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email       = trim($_POST["email"] ?? "");
     $usuario       = trim($_POST["usuario"] ?? "");
     $contrasena = $_POST["contrasena"] ?? "";
+    $es_medico      = ($_POST["es_medico"] ?? "");
+
 
    
     if ($nombre == "") {
@@ -25,8 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Todo válido: guardamos
         try {
             $hash = password_hash($contrasena, PASSWORD_DEFAULT);
-            $sql  = "INSERT INTO ADMINISTRATIVO (nombre, apellido, email, usuario, contrasena, fecha_registro) 
-                    VALUES (:nombre, :apellido, :email, :usuario, :contrasena, NOW())";
+            $sql  = "INSERT INTO ADMINISTRATIVO (nombre, apellido, email, usuario, contrasena, fecha_registro, es_medico) 
+                    VALUES (:nombre, :apellido, :email, :usuario, :contrasena, NOW(), :es_medico)";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([
                 "nombre"      => $nombre,
@@ -34,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 "email"       => $email,
                 "usuario"       => $usuario,
                 "contrasena" => $hash
+                "es_medico" => $es_medico
                 
             ]);
             $mensaje = "Usuario registrado correctamente";
