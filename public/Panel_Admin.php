@@ -5,6 +5,15 @@
             session_start();
             $mensaje = $_SESSION["mensaje"] ?? "";
     ?>
+    <?php if ($_SESSION["rol"]  = "medico";): ?>
+             
+            <?php endif; ?>
+
+
+      <?php if ($_SESSION["rol"]  = "administrador";): ?>
+             
+            <?php endif; ?>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Panel de administracion</title>
