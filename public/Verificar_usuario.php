@@ -25,10 +25,18 @@ if (!$admin || !password_verify($contrasena, $admin["contrasena"])) {
     header("Location: login.php"); 
     exit;
 }
+$stmt = $pdo->prepare("SELECT es_medico FROM ADMINISTRATIVO WHERE usuario = :usuario");
+$stmt->execute(["es_medico" => $es_medico]);
+$es_medico = $stmt->fetch(PDO::FETCH_ASSOC);
+
 
 session_regenerate_id(true);
+if ($es_medico == "false") {
+    $_SESSION["rol"]            = "administrador";
+    } else {
+        $_SESSION["rol"]            = "medico";
+     }
 
-$_SESSION["rol"]            = "administrador";
 $_SESSION["id_funcionario"] = $admin["id_funcionario"];
 $_SESSION["nombre"]         = $admin["nombre"];
 
