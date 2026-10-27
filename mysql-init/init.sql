@@ -107,10 +107,10 @@ CREATE TABLE IF NOT EXISTS `DOCUMENTO` (
   `id_funcionario_creador` integer NULL
 );
 
-DROP INDEX IF EXISTS `PREGUNTA_index_0` ON `PREGUNTA`;
+-- 1. Primero creas el índice único con normalidad (sin hacer DROP antes)
 CREATE UNIQUE INDEX `PREGUNTA_index_0` ON `PREGUNTA` (`id_encuesta`, `orden`);
 
--- Claves foráneas
+-- 2. Al final, agregas todas las llaves foráneas de todo el proyecto juntas
 ALTER TABLE `ENCUESTA` ADD FOREIGN KEY (`id_tipo_encuesta`) REFERENCES `TIPO_ENCUESTA` (`id_tipo_encuesta`);
 ALTER TABLE `ENCUESTA` ADD FOREIGN KEY (`id_funcionario_creador`) REFERENCES `ADMINISTRATIVO` (`id_funcionario`);
 
