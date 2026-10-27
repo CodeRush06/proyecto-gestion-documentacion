@@ -98,6 +98,7 @@ CREATE TABLE `DOCUMENTO` (
   `fecha_actualizacion` datetime,
   `estado` varchar(30) NOT NULL,
   `id_subcategoria` integer NULL,
+  `id_categoria` integer NULL,
   `id_funcionario_creador` integer NULL
 );
 
