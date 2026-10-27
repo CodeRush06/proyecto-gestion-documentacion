@@ -120,8 +120,6 @@ ALTER TABLE `RESPUESTA_DETALLE` ADD FOREIGN KEY (`id_opcion`) REFERENCES `OPCION
 ALTER TABLE `DOCUMENTO` ADD FOREIGN KEY (`id_subcategoria`) REFERENCES `SUBCATEGORIA_DOCUMENTO` (`id_subcategoria`);
 ALTER TABLE `DOCUMENTO` ADD FOREIGN KEY (`id_funcionario_creador`) REFERENCES `ADMINISTRATIVO` (`id_funcionario`);
 
-ALTER TABLE `ACCESO_DOCUMENTO` ADD FOREIGN KEY (`id_documento`) REFERENCES `DOCUMENTO` (`id_documento`);
-ALTER TABLE `ACCESO_DOCUMENTO` ADD FOREIGN KEY (`id_paciente`) REFERENCES `PACIENTE` (`id_paciente`);
 -- datos de prueba
 INSERT INTO `ADMINISTRATIVO` (`id_funcionario`, `nombre`, `apellido`, `email`, `usuario`, `contrasena`, `fecha_registro`) VALUES
 (1, 'Admin', 'Sistema', 'admin@hospital.com', 'admin', '$2a$12$eImiTXuWVxfM37uY4JANjOL.8/OHqA4/y1z2H.g0B5eXNqXz9G', NOW());
