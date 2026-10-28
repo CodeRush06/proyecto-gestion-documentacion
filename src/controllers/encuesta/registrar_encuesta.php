@@ -1,6 +1,6 @@
 <?php
 session_start();
-require __DIR__ . "/conectar.php";
+require __DIR__ . '../config/database.php';
 $mensaje = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
