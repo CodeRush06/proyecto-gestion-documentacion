@@ -1,5 +1,4 @@
-DROP DATABASE IF EXISTS `MODULO1`;
-CREATE DATABASE `MODULO1`;
+CREATE DATABASE IF NOT EXISTS `MODULO1`;
 USE `MODULO1`;
 
 CREATE TABLE IF NOT EXISTS `TIPO_ENCUESTA` (
@@ -107,10 +106,10 @@ CREATE TABLE IF NOT EXISTS `DOCUMENTO` (
   `id_funcionario_creador` integer NULL
 );
 
--- 1. Primero creas el índice único con normalidad (sin hacer DROP antes)
+DROP INDEX IF EXISTS `PREGUNTA_index_0` ON `PREGUNTA`;
 CREATE UNIQUE INDEX `PREGUNTA_index_0` ON `PREGUNTA` (`id_encuesta`, `orden`);
 
--- 2. Al final, agregas todas las llaves foráneas de todo el proyecto juntas
+-- Claves foráneas
 ALTER TABLE `ENCUESTA` ADD FOREIGN KEY (`id_tipo_encuesta`) REFERENCES `TIPO_ENCUESTA` (`id_tipo_encuesta`);
 ALTER TABLE `ENCUESTA` ADD FOREIGN KEY (`id_funcionario_creador`) REFERENCES `ADMINISTRATIVO` (`id_funcionario`);
 
@@ -129,7 +128,6 @@ ALTER TABLE `DOCUMENTO` ADD FOREIGN KEY (`id_subcategoria`) REFERENCES `SUBCATEG
 ALTER TABLE `DOCUMENTO` ADD FOREIGN KEY (`id_categoria`) REFERENCES `CATEGORIA_DOCUMENTO` (`id_categoria`);
 ALTER TABLE `DOCUMENTO` ADD FOREIGN KEY (`id_funcionario_creador`) REFERENCES `ADMINISTRATIVO` (`id_funcionario`);
 
--- Datos de prueba corregidos (separando categorías de subcategorías lógicamente)
 INSERT INTO `ADMINISTRATIVO` (`id_funcionario`, `nombre`, `apellido`, `email`, `usuario`, `contrasena`, `fecha_registro`) VALUES
 (1, 'Admin', 'Sistema', 'admin@hospital.com', 'admin', '$2a$12$eImiTXuWVxfM37uY4JANjOL.8/OHqA4/y1z2H.g0B5eXNqXz9G', NOW());
 
