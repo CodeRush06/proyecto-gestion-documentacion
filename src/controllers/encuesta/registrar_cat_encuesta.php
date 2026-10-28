@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "conectar.php";
+require '../config/database.php';
 $mensaje = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
