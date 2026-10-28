@@ -1,6 +1,6 @@
 <?php
 session_start();
-require __DIR__ . "/conectar.php";
+require __DIR__ .  '/../src/config/database.php';
 
 $mensaje_respuesta = $_SESSION["mensaje_respuesta"] ?? "";
 unset($_SESSION["mensaje_respuesta"]);
