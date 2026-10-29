@@ -1,6 +1,6 @@
 <?php
 $host = "coderush-db";
-$db = "modulo1";
+$db = "MODULO1";
 $user = "coderush";
 $pass = "coderush";
 $charset = "utf8mb4";
