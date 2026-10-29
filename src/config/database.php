@@ -1,5 +1,5 @@
 <?php
-$host = "192.168.2.114";
+$host = "coderush-db";
 $db = "modulo1";
 $user = "coderush";
 $pass = "coderush";
