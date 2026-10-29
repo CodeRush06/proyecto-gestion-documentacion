@@ -16,7 +16,7 @@ services:
     container_name: coderush-db
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: MODULO1
+      MYSQL_DATABASE: modulo1
       MYSQL_USER: coderush
       MYSQL_PASSWORD: coderush
     ports:
