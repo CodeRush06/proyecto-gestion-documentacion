@@ -1,5 +1,5 @@
 <?php
-require "conectar.php";
+require DIR . '/../../config/database.php';
 
 $recibir_categoria = "SELECT * FROM CATEGORIA_DOCUMENTO";
 $stmt = $pdo->query($recibir_categoria);
