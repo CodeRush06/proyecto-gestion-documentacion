@@ -1,1 +1,34 @@
+services:
+  coderush_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: coderush-app
+    ports:
+      - "3500:80"
+    depends_on:
+      - database
+    networks:
+      - network-coderush
 
+  database:
+    image: mariadb
+    container_name: coderush-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: modulo1
+      MYSQL_USER: coderush
+      MYSQL_PASSWORD: coderush
+    ports:
+      - "33060:3306"
+    networks:
+      - network-coderush
+    volumes:
+      - db-volume:/var/lib/mysql
+      - ./mysql-init/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  db-volume:
+
+networks:
+  network-coderush:
