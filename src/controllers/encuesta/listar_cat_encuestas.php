@@ -1,5 +1,5 @@
 <?php
-require '/../config/database.php';
+require '/../../config/database.php';
 
 $recibir_enc = "SELECT * FROM tipo_encuesta";
 $stmt = $pdo->query($recibir_enc);
