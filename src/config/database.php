@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
 $db = "modulo1";
-$user = "root";
-$pass = "root";
+$user = "coderush";
+$pass = "coderush";
 $charset = "utf8mb4";
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
