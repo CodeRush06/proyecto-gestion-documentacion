@@ -27,7 +27,7 @@ $mensaje_usuario = $_SESSION["mensaje_usuario"] ?? "";
                 <div class="alert alert-info"><?= htmlspecialchars($_SESSION["mensaje_usuario"]) ?></div>
                 <?php unset($_SESSION["mensaje_usuario"]); ?>
             <?php endif; ?>
-           <form method="POST" action="Verificar_usuario.php">
+           <form method="POST" action="Verificar_usuario.php" class="mx-auto" style="max-width: 420px;">
              <input class="form-control mb-2" name="usuario" placeholder="Usuario">
             <input class="form-control mb-2" name="contrasena" type="password" placeholder="Contraseña">
         <button class="btn btn-primary">Ingresar</button>
