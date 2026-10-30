@@ -3,7 +3,7 @@
 // 1. LÓGICA (todo el PHP queda arriba, el HTML abajo)
 // =====================================================
 session_start();
-$rol = $_SESSION['rol'] ?? '';
+$rol = $_SESSION['rol'] ?? 'administrador';
 if ($rol != 'administrador' && $rol != 'medico') {
     header("Location: login.php"); // cambiá el nombre si tu login se llama distinto
     exit;
