@@ -40,7 +40,14 @@ $documentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <h2 class="fw-bold m-0"><?= htmlspecialchars($categoriaActual['nombre_categoria']) ?></h2>
     <p class="text-muted"><?= htmlspecialchars($categoriaActual['descripcion']) ?></p>
   </header>
-
+<!-- Retornar !-->
+<div class="position-absolute start-0 ms-4" style="top: 100px; z-index: 10;">
+    <div class="card">
+      <a href="index.html" class="btn p-2"  title="Volver">
+        <img src="Logo/Retornar.png" style="height: 40px; width: 40px;">
+      </a>
+</div>
+    </div>
   <main class="container my-4">
     <?php if (empty($documentos)): ?>
       <p class="text-muted">No hay documentos en esta categoría todavía.</p>
