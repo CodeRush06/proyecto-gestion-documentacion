@@ -21,7 +21,7 @@
       <div class="row align-items-center g-2">
         <div class="col-auto">
           <a class="navbar-brand m-0" href="#">
-            <img src="https://hc.edu.uy/images/imagenesarticulos/Logo_Hc.jpg" style="max-width: 150px; height: auto;" alt="Hospital de Clinicas">
+            <img src="Logo/HDC.png" style="max-width: 150px; height: auto;" alt="Hospital de Clinicas">
           </a>
         </div>
         <div class="col">
