@@ -31,6 +31,17 @@
         </div>
       </div>
     </header>
+
+    
+  <!-- Retornar !-->
+<div class="position-absolute start-0 ms-4" style="top: 100px; z-index: 10;">
+    <div class="card">
+      <a href="index.html" class="btn p-2"  title="Volver">
+        <img src="Logo/Retornar.png" style="height: 40px; width: 40px;">
+      </a>
+</div>
+    </div>
+
     <main class="position-absolute top-0 bottom-0 start-0 end-0 my-auto" style="height: fit-content;">
      <div id="carouselExample" class="carousel slide w-100">
   <div class="carousel-inner text-center">
