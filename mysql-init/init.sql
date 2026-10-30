@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `CATEGORIA_DOCUMENTO` (
   `nombre_categoria` varchar(100) UNIQUE NOT NULL,
   `descripcion` text,
   `estado_activo` boolean NOT NULL DEFAULT true,
-  `archivo_url` varchar(500) NOT NULL
+  `archivo_url` varchar(500)
 );
 
 CREATE TABLE IF NOT EXISTS `SUBCATEGORIA_DOCUMENTO` (
