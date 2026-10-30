@@ -8,6 +8,6 @@ $recibir_subcategoria = "SELECT
             sc.estado_activo,
             sc.id_categoria,
             cd.nombre_categoria
-        FROM subcategoria_documento sc
-        JOIN categoria_documento cd ON sc.id_categoria = cd.id_categoria";
+        FROM SUBCATEGORIA_DOCUMENTO sc
+        JOIN CATEGORIA_DOCUMENTO cd ON sc.id_categoria = cd.id_categoria";
 $stmt = $pdo->query($recibir_subcategoria);
