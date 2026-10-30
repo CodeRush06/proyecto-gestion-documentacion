@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && in_array($accion, ["crear", "modific
             if ($id <= 0) {
                 $mensaje = "Seleccione un tipo de encuesta";
             } else {
-                $stmt = $pdo->prepare("UPDATE tipo_encuesta SET estado_activo = 0
+                $stmt = $pdo->prepare("UPDATE TIPO_ENCUESTA SET estado_activo = 0
                                        WHERE id_tipo = :id AND estado_activo = 1");
                 $stmt->execute(["id" => $id]);
 
@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && in_array($accion, ["crear", "modific
             if ($id <= 0) {
                 $mensaje = "Seleccione un tipo de encuesta";
             } else {
-                $sql = "UPDATE tipo_encuesta
+                $sql = "UPDATE TIPO_ENCUESTA
                         SET nombre_tipo = :nombre_tipo, descripcion = :descripcion
                         WHERE id_tipo = :id AND estado_activo = 1";
                 $stmt = $pdo->prepare($sql);
@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && in_array($accion, ["crear", "modific
         // CREAR
         // =================================================
         } else {
-            $sql = "INSERT INTO tipo_encuesta (nombre_tipo, descripcion, estado_activo)
+            $sql = "INSERT INTO TIPO_ENCUESTA (nombre_tipo, descripcion, estado_activo)
                     VALUES (:nombre_tipo, :descripcion, :estado_activo)";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([
