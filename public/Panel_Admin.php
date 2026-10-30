@@ -17,7 +17,7 @@ require "../src/controllers/documento/titulos_documento.php";
 require "../src/controllers/encuesta/listar_encuestas.php";
 require "../src/controllers/encuesta/listar_respuestas.php";
 require "../src/controllers/documento/listar_subcategorias.php";
-require "../src/controllers/usuario/listar_usuarios.php";
+require "../src/controllers/usuario/listar_admins.php";
 
 // Mensaje y resultado ("ok" / "error") que dejan los scripts CRUD_*.php
 $mensaje_cat_doc      = $_SESSION["mensaje_cat_doc"] ?? "";
@@ -773,7 +773,7 @@ foreach (["cat_doc", "subcat_doc", "documento", "cat_enc", "formulario", "usuari
 
                 <select class="form-select mb-2" name="id" required>
                   <option value="">Seleccione un administrador</option>
-                  <?php foreach ($usuarios as $u): ?>
+                  <?php foreach ($admin as $u): ?>
                     <?php if ($u['estado_activo']): ?>
                       <option value="<?= (int) $u['id_funcionario'] ?>"><?= htmlspecialchars($u['usuario']) ?></option>
                     <?php endif; ?>
@@ -784,6 +784,7 @@ foreach (["cat_doc", "subcat_doc", "documento", "cat_enc", "formulario", "usuari
                 <input class="form-control mb-2" name="apellido" placeholder="Nuevo apellido" required>
                 <input class="form-control mb-2" name="email" type="email" placeholder="Nuevo email" required>
                 <input class="form-control mb-2" name="usuario" placeholder="Nuevo usuario" required>
+                  
 
                 <button class="btn btn-warning text-white w-100">Modificar</button>
               </form>
@@ -815,7 +816,7 @@ foreach (["cat_doc", "subcat_doc", "documento", "cat_enc", "formulario", "usuari
                     <tr><th>ID</th><th>Nombre</th><th>Email</th><th>Usuario</th><th>Estado</th></tr>
                   </thead>
                   <tbody>
-                    <?php foreach ($user as $u): ?>
+                    <?php foreach ($admin as $u): ?>
                     <tr>
                       <th scope="row"><?= htmlspecialchars($u['id_funcionario']) ?></th>
                       <td><?= htmlspecialchars($u['nombre'] . ' ' . $u['apellido']) ?></td>
