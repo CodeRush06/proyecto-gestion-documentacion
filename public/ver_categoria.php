@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . "/conectar.php";
+require __DIR__ . '/../src/config/database.php';
 
 $id_categoria = isset($_GET["id"]) ? (int) $_GET["id"] : 0;
 
