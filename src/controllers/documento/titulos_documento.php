@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../../config/database.php;
+require __DIR__ . '/../../config/database.php';
 
 $recibir_titulos = "SELECT d.*, 
                             cd.nombre_categoria AS categoria_directa,
