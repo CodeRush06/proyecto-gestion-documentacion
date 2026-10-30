@@ -4,10 +4,7 @@
 // =====================================================
 session_start();
 $rol = $_SESSION['rol'] ?? 'administrador';
-if ($rol != 'administrador' && $rol != 'medico') {
-    header("Location: login.php"); // cambiá el nombre si tu login se llama distinto
-    exit;
-}
+
 if($rol == 'administrador'){
 // Conexión y listados que usa la página
 require __DIR__ . "/../src/config/database.php";
