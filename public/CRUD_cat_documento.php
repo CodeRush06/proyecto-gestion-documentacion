@@ -68,8 +68,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && in_array($accion, ["crear", "modific
         // =================================================
         // CREAR: acá sí se exige y se guarda la imagen
         // =================================================
-        } elseif (!isset($_FILES["logo"]) || $_FILES["logo"]["error"] !== UPLOAD_ERR_OK) {
-            $mensaje = "Falta seleccionar una imagen válida";
+        } elseif ($_FILES["logo"]["error"] !== UPLOAD_ERR_OK) {
+            $mensaje = "Seleccione una imagen válida";
         } else {
             $archivo = $_FILES["logo"];
 
