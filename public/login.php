@@ -15,7 +15,7 @@ $mensaje_usuario = $_SESSION["mensaje_usuario"] ?? "";
     <main class="position-absolute top-0 bottom-0 start-0 end-0 my-auto">
     <div class="card border shadow-sm text-center text-decoration-none p-4 h-100 justify-content-center">
 <!-- Boton de retornar !-->
-        <a href="index.php"
+        <a href="index.html"
        class="position-absolute top-0 start-0 m-3 p-2 d-inline-flex align-items-center text-decoration-none"
        aria-label="Volver">
       <img src="Logo/Retornar.png" alt="" style="width: 40px; height: 40px;">
