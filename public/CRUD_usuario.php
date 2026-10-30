@@ -4,8 +4,7 @@ require __DIR__ . '/../src/config/database.php';
 
 $mensaje   = "";
 $resultado = "error";
-$accion    = $_POST["accion"] ?? "crear";
-
+$accion    = $_POST["accion"] ?? " ";
 if ($_SERVER["REQUEST_METHOD"] == "POST" && in_array($accion, ["crear", "modificar", "borrar"], true)) {
 
     $id         = (int) ($_POST["id"] ?? 0);
