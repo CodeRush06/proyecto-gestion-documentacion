@@ -50,7 +50,7 @@ foreach (["cat_doc", "subcat_doc", "documento", "cat_enc", "formulario", "usuari
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Panel de administracion</title>
+    <title>Panel de Administracion</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body class="bg-white m-0 app-layout">
