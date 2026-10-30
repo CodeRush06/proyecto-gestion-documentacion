@@ -89,7 +89,6 @@ CREATE TABLE IF NOT EXISTS `SUBCATEGORIA_DOCUMENTO` (
   `nombre_subcategoria` varchar(100) NOT NULL,
   `descripcion` text,
   `estado_activo` boolean NOT NULL DEFAULT true,
-  `archivo_url` varchar(500) NOT NULL,
   CONSTRAINT `fk_subcat_cat` FOREIGN KEY (`id_categoria`) 
     REFERENCES `CATEGORIA_DOCUMENTO` (`id_categoria`)
 );
