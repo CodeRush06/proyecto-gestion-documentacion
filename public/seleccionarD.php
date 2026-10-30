@@ -49,7 +49,7 @@
     <div class="carousel-item <?= $primero ? 'active' : '' ?>">
       <button class="slide-button" onclick="location.href='ver_categoria.php?id=<?= (int) $cat['id_categoria'] ?>'">
         <div class="card border-0 bg-transparent mx-auto" style="max-width: 18rem;">
-          <img src="<?= htmlspecialchars($cat['archivo_url']) ?>" alt="<?= htmlspecialchars($cat['nombre_categoria']) ?>" class="mx-auto" style="max-width: 150px; height: auto;">
+          <img src="<?= !empty($cat['archivo_url']) ? htmlspecialchars($cat['archivo_url']) : 'Logo/Documento.png'; ?>" alt="<?= htmlspecialchars($cat['nombre_categoria']) ?>" class="mx-auto" style="max-width: 150px; height: auto;">
           <div class="card-body pt-2">
             <h5 class="card-title fw-bold text-dark fs-3"><?= htmlspecialchars($cat['nombre_categoria']) ?></h5>
           </div>
