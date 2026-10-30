@@ -1,6 +1,6 @@
 <?php
 // listar_formularios.php
-require __DIR__ . '../config/database.php';
+require __DIR__ . '/../../config/database.php;
 
 $sql = "SELECT e.*, te.nombre_tipo
         FROM ENCUESTA e
