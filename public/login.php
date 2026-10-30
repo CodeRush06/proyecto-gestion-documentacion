@@ -22,12 +22,12 @@ $mensaje_usuario = $_SESSION["mensaje_usuario"] ?? "";
     </a>
         
         <img src="Logo/Usuario.png" alt="Usuario" class="mx-auto" style="max-width: 120px;">
-        <h5 class="card-title fw-bold text-dark fs-4 m-0 pt-3" id="Usuario">Administrador</h5>
+        <h5 class="card-title fw-bold text-dark fs-4 m-0 pt-3" id="Usuario">Administrador/Médico</h5>
              <?php if (!empty($mensaje_usuario)): ?>
                 <div class="alert alert-info"><?= htmlspecialchars($_SESSION["mensaje_usuario"]) ?></div>
                 <?php unset($_SESSION["mensaje_usuario"]); ?>
             <?php endif; ?>
-           <form method="POST" action="Verificar_usuario.php" class="mx-auto col-11 col-md-6 col-lg-4">
+           <form method="POST" action="Verificar_usuario.php" class="mx-auto my-3 col-11 col-md-6 col-lg-4">
              <input class="form-control mb-2" name="usuario" placeholder="Usuario">
             <input class="form-control mb-2" name="contrasena" type="password" placeholder="Contraseña">
         <button class="btn btn-primary">Ingresar</button>
