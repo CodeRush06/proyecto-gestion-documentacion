@@ -137,8 +137,8 @@ INSERT INTO `TIPO_ENCUESTA` (`id_tipo_encuesta`, `nombre_tipo`, `descripcion`, `
 
 -- Categorías (5 columnas)
 INSERT INTO `CATEGORIA_DOCUMENTO` (`id_categoria`, `nombre_categoria`, `descripcion`, `archivo_url`, `estado_activo`) VALUES
-(1, 'Consentimientos Informados', 'Documentos legales de autorización', '/public/Categoria_Logo/Corazon.png', TRUE),
-(2, 'Guías de Cuidados', 'Instructivos de recuperación e higiene', TRUE);
+(1, 'Consentimientos Informados', 'Documentos legales de autorización', '/Categoria_Logo/Corazon.png', TRUE),
+(2, 'Guías de Cuidados', 'Instructivos de recuperación e higiene', NULL,  TRUE);
 
 -- Subcategorías (asociadas a las categorías anteriores)
 INSERT INTO `SUBCATEGORIA_DOCUMENTO` (`id_subcategoria`, `id_categoria`, `nombre_subcategoria`, `descripcion`, `estado_activo`) VALUES
