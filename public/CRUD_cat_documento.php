@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && in_array($accion, ["crear", "modific
             if ($id <= 0) {
                 $mensaje = "Seleccione una categoría";
             } else {
-                $stmt = $pdo->prepare("UPDATE categoria_documento SET estado_activo = 0
+                $stmt = $pdo->prepare("UPDATE CATEGORIA_DOCUMENTO SET estado_activo = 0
                                        WHERE id_categoria = :id AND estado_activo = 1");
                 $stmt->execute(["id" => $id]);
 
@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && in_array($accion, ["crear", "modific
             if ($id <= 0) {
                 $mensaje = "Seleccione una categoría";
             } else {
-                $sql = "UPDATE categoria_documento
+                $sql = "UPDATE CATEGORIA_DOCUMENTO
                         SET nombre_categoria = :nombre_categoria, descripcion = :descripcion
                         WHERE id_categoria = :id AND estado_activo = 1";
                 $stmt = $pdo->prepare($sql);
@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && in_array($accion, ["crear", "modific
                 if (!move_uploaded_file($archivo["tmp_name"], $rutaDestino)) {
                     $mensaje = "Error al guardar la imagen";
                 } else {
-                    $sql = "INSERT INTO categoria_documento (nombre_categoria, descripcion, estado_activo, archivo_url)
+                    $sql = "INSERT INTO CATEGORIA_DOCUMENTO (nombre_categoria, descripcion, estado_activo, archivo_url)
                             VALUES (:nombre_categoria, :descripcion, :estado_activo, :archivo_url)";
                     $stmt = $pdo->prepare($sql);
                     $stmt->execute([
