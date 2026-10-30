@@ -5,8 +5,7 @@ require __DIR__ . '/../src/config/database.php';
 $mensaje   = "";
 $resultado = "error"; // pasa a "ok" solo si la operación sale bien
 
-// Acción que viene del formulario (si no viene, se asume "crear")
-$accion = $_POST["accion"] ?? "crear";
+$accion    = $_POST["accion"] ?? " ";
 
 // Guardián: solo POST y solo acciones conocidas
 if ($_SERVER["REQUEST_METHOD"] == "POST" && in_array($accion, ["crear", "modificar", "borrar"], true)) {
