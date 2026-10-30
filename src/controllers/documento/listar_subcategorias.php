@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../config/database.php';
+require __DIR__ . '/../../config/database.php;
 
 $recibir_subcategoria = "SELECT
             sc.id_subcategoria,
