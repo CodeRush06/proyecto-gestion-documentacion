@@ -3,7 +3,7 @@
 // 1. LÓGICA (todo el PHP queda arriba, el HTML abajo)
 // =====================================================
 if (!isset($_SESSION['rol'])) {
-    header("Location: ../login.php");
+    header("Location: /login.php");
     exit;
 } else {
     $rol = $_SESSION['rol'];
