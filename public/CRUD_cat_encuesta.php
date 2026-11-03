@@ -14,8 +14,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && in_array($accion, ["crear", "modific
     $id            = (int) ($_POST["id"] ?? 0);
     $nombre_tipo   = trim($_POST["nombre_tipo"] ?? "");
     $descripcion   = trim($_POST["descripcion"] ?? "");
-    $privado       = isset($_POST["privado"]);   // true si tildó "Mantener privado"
-    $estado_activo = $privado ? 0 : 1;           // privado = no visible = desactivado
 
     try {
         // =================================================
