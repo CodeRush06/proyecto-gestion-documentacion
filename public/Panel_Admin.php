@@ -5,8 +5,9 @@
 if (!isset($_SESSION['rol'])) {
     header("Location: ../login.php");
     exit;
-} 
-$rol = $_SESSION['rol'];
+} else {
+    $rol = $_SESSION['rol'];
+}
 
 if($rol == 'administrador'){
 // Conexión y listados que usa la página
