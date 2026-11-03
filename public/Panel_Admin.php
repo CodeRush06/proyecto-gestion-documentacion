@@ -794,7 +794,7 @@ foreach (["cat_doc", "subcat_doc", "documento", "cat_enc", "formulario", "usuari
 
                 <select class="form-select mb-2" name="id" required>
                   <option value="">Seleccione un administrador</option>
-                  <?php foreach ($user as $u): ?>
+                  <?php foreach ($admin as $u): ?>
                     <?php if ($u['estado_activo']): ?>
                       <option value="<?= (int) $u['id_funcionario'] ?>"><?= htmlspecialchars($u['usuario']) ?></option>
                     <?php endif; ?>
@@ -819,7 +819,7 @@ foreach (["cat_doc", "subcat_doc", "documento", "cat_enc", "formulario", "usuari
                       <td><?= htmlspecialchars($u['nombre'] . ' ' . $u['apellido']) ?></td>
                       <td><?= htmlspecialchars($u['email']) ?></td>
                       <td><?= htmlspecialchars($u['usuario']) ?></td>
-                      <td><?= $u['estado_activo'] ? 'true' : 'false' ?></td>
+                      <td><?= $u['fecha_registro'] ?></td>
                     </tr>
                     <?php endforeach; ?>
                   </tbody>
