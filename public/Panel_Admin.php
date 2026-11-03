@@ -113,11 +113,6 @@ foreach (["cat_doc", "subcat_doc", "documento", "cat_enc", "formulario", "usuari
                 <label for="imagen-categoria" class="form-label">Selecciona una imagen:</label>
                 <input type="file" id="imagen-categoria" class="form-control mb-2" name="logo" accept="image/*">
 
-                <div class="form-check mb-3">
-                  <input type="checkbox" class="form-check-input" id="privadoCatDoc" name="privado" value="1">
-                  <label class="form-check-label" for="privadoCatDoc">Mantener privado</label>
-                </div>
-
                 <button class="btn btn-primary w-100">Registrar</button>
               </form>
             </div>
@@ -227,10 +222,6 @@ foreach (["cat_doc", "subcat_doc", "documento", "cat_enc", "formulario", "usuari
                 <label for="imagen-subcategoria" class="form-label">Selecciona una imagen:</label>
                 <input type="file" id="imagen-subcategoria" class="form-control mb-2" name="logo" accept="image/*" required>
 
-                <div class="form-check mb-3">
-                  <input type="checkbox" class="form-check-input" id="privadoSubcat" name="privado" value="1">
-                  <label class="form-check-label" for="privadoSubcat">Mantener privado</label>
-                </div>
 
                 <button class="btn btn-primary w-100">Registrar</button>
               </form>
@@ -482,10 +473,6 @@ foreach (["cat_doc", "subcat_doc", "documento", "cat_enc", "formulario", "usuari
                 <input class="form-control mb-2" name="nombre_tipo" placeholder="Nombre de Tipo de Encuesta">
                 <input class="form-control mb-2" name="descripcion" placeholder="Descripcion">
 
-                <div class="form-check mb-3">
-                  <input type="checkbox" class="form-check-input" id="privadoCatEnc" name="privado" value="1">
-                  <label class="form-check-label" for="privadoCatEnc">Mantener privado</label>
-                </div>
 
                 <button class="btn btn-primary w-100">Registrar</button>
               </form>
@@ -593,10 +580,6 @@ foreach (["cat_doc", "subcat_doc", "documento", "cat_enc", "formulario", "usuari
                   <?php endforeach; ?>
                 </select>
 
-                <div class="form-check mb-2">
-                  <input type="checkbox" class="form-check-input" id="privadoEnc" name="privado" value="1">
-                  <label class="form-check-label" for="privadoEnc">Mantener privado</label>
-                </div>
 
                 <div class="form-check mb-3">
                   <input type="checkbox" class="form-check-input" id="requiereCedula" name="requiere_cedula" value="1">
