@@ -5,6 +5,10 @@
 session_start();
 $rol = $_SESSION['rol'] ?? '';
 
+if ($rol = '') {
+    header("Location: login.php");
+    }
+
 if($rol == 'administrador'){
 // Conexión y listados que usa la página
 require __DIR__ . "/../src/config/database.php";
