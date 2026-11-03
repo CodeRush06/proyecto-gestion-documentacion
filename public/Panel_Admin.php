@@ -17,7 +17,7 @@ require __DIR__ . "/../src/config/database.php";
 require "../src/controllers/documento/listar_cat_documentos.php";
 require "../src/controllers/encuesta/listar_cat_encuestas.php";
 require "../src/controllers/documento/titulos_documento.php";
-require "../src/controllers/encuesta/listar_encuestas.php";
+require "../src/controllers/encuesta/Listar_encuesta.php";
 require "../src/controllers/encuesta/listar_respuestas.php";
 require "../src/controllers/documento/listar_subcategorias.php";
 require "../src/controllers/usuario/listar_admins.php";
@@ -582,6 +582,7 @@ foreach (["cat_doc", "subcat_doc", "documento", "cat_enc", "formulario", "usuari
             <!-- Panel: Registrar (el JS arma las preguntas antes de enviar) -->
             <div class="collapse mb-4 text-start" id="enc-nuevo">
               <form method="POST" action="CRUD_encuesta.php" id="form-encuesta" onsubmit="return validarEncuesta(this)">
+                      <input type="hidden" name="accion" value="crear">
                 <input class="form-control mb-2" name="titulo" placeholder="Titulo" required>
                 <input class="form-control mb-2" name="descripcion" placeholder="Descripcion" required>
 
