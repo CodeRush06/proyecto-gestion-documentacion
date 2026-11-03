@@ -2,8 +2,11 @@
 // =====================================================
 // 1. LÓGICA (todo el PHP queda arriba, el HTML abajo)
 // =====================================================
-session_start();
-$rol = $_SESSION['rol'] ?? '';
+if (!isset($_SESSION['rol'])) {
+    header("Location: ../login.php");
+    exit;
+} 
+$rol = $_SESSION['rol'];
 
 if($rol == 'administrador'){
 // Conexión y listados que usa la página
