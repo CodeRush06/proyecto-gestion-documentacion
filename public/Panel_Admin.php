@@ -2,6 +2,9 @@
 // =====================================================
 // 1. LÓGICA (todo el PHP queda arriba, el HTML abajo)
 // =====================================================
+
+var_dump($_SESSION);
+
 if (!isset($_SESSION['rol'])) {
     header("Location: /public/login.php");
     exit;
