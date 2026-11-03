@@ -11,3 +11,4 @@ $recibir_subcategoria = "SELECT
         FROM SUBCATEGORIA_DOCUMENTO sc
         JOIN CATEGORIA_DOCUMENTO cd ON sc.id_categoria = cd.id_categoria";
 $stmt = $pdo->query($recibir_subcategoria);
+$subcategoria = $stmt->fetchAll(PDO::FETCH_ASSOC);
