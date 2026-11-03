@@ -36,7 +36,7 @@ if ((int) $admin["es_medico"] === 1) {
     $_SESSION["rol"] = "administrador";
 }
 
-$_SESSION["id_funcionario"] = $admin["id_usuario"];
+$_SESSION["id_funcionario"] = $admin["id_funcionario"];
 $_SESSION["nombre"]         = $admin["nombre"];
 
 header("Location: Panel_Admin.php");
