@@ -3,7 +3,7 @@
 // 1. LÓGICA (todo el PHP queda arriba, el HTML abajo)
 // =====================================================
 session_start();
-$rol = $_SESSION['rol'];
+$rol = $_SESSION['rol'] ?? '';
 
 if($rol == 'administrador'){
 // Conexión y listados que usa la página
