@@ -619,7 +619,6 @@ foreach (["cat_doc", "subcat_doc", "documento", "cat_enc", "formulario", "usuari
             <!-- Panel: Modificar -->
             <div class="collapse mb-4 text-start" id="enc-modificar">
               <form action="CRUD_encuesta.php" method="POST" onsubmit="return validarEncuesta(this)">
->
                 <input type="hidden" name="accion" value="modificar">
 
                 <select class="form-select mb-2" name="id" required>
