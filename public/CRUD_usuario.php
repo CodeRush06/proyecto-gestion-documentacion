@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && in_array($accion, ["crear", "modific
                 $mensaje = "No se puede eliminar al último administrador";
             } else {
                 $stmt = $pdo->prepare("UPDATE ADMINISTRATIVO SET estado_activo = 0
-                                       WHERE id_usuario = :id AND estado_activo = 1");
+                                       WHERE id_funcionario = :id AND estado_activo = 1");
                 $stmt->execute(["id" => $id]);
 
                 if ($stmt->rowCount() > 0) {
