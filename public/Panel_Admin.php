@@ -8,7 +8,7 @@ session_start();
   //  header("Location: /public/login.php");
     //exit;
 //} else {
-    $rol = $_SESSION['rol' ?? 'administrador'];
+    $rol = $_SESSION['rol'] ?? 'administrador';
 //}
 
 if($rol == 'administrador'){
