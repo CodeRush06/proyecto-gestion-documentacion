@@ -118,22 +118,43 @@ CREATE TABLE IF NOT EXISTS `DOCUMENTO` (
   CONSTRAINT `fk_doc_func` FOREIGN KEY (`id_funcionario_creador`) REFERENCES `ADMINISTRATIVO` (`id_funcionario`)
 );
 
-INSERT INTO `ADMINISTRATIVO` (`id_funcionario`, `nombre`, `apellido`, `email`, `usuario`, `contrasena`, `fecha_registro`) VALUES
-(1, 'Admin', 'Sistema', 'admin@hospital.com', 'admin', '$2a$12$eImiTXuWVxfM37uY4JANjOL.8/OHqA4/y1z2H.g0B5eXNqXz9G', NOW());
+-- 1. Inserción de datos maestros (sin dependencias)
+-- Nuevo administrador con contraseña: 12345678
+INSERT INTO `ADMINISTRATIVO` (
+    `id_funcionario`, 
+    `nombre`, 
+    `apellido`, 
+    `email`, 
+    `usuario`, 
+    `contrasena`, 
+    `fecha_registro`, 
+    `es_medico`, 
+    `estado_activo`
+) VALUES (
+    2, 
+    'Nuevo', 
+    'Administrador', 
+    'nuevo.admin@hospital.com', 
+    'nuevoadmin', 
+    '$2b$12$9PNKqJlsD8RWZiQBfNzwHeTZ1mTqtiDBngAkC0H6U.fIlCrCpTWEG', 
+    NOW(), 
+    FALSE, 
+    TRUE
+);
 
 INSERT INTO `TIPO_ENCUESTA` (`id_tipo_encuesta`, `nombre_tipo`, `descripcion`, `estado_activo`) VALUES
 (1, 'Satisfacción General', 'Evaluación de atención al paciente', TRUE),
 (2, 'Seguimiento Médico', 'Monitoreo posterior a consulta o procedimiento', TRUE);
 
--- Categorías (5 columnas)
+INSERT INTO `PACIENTE` (`id_paciente`, `cedula`, `nombre`, `apellido`, `email`, `telefono`, `fecha_registro`) VALUES
+(1, '12345678', 'Juan', 'Pérez', 'juan.perez@example.com', '+59899123456', NOW());
+
 INSERT INTO `CATEGORIA_DOCUMENTO` (`id_categoria`, `nombre_categoria`, `descripcion`, `archivo_url`, `estado_activo`) VALUES
 (1, 'Consentimientos Informados', 'Documentos legales de autorización', '/Categoria_Logo/Corazon.png', TRUE),
-(2, 'Guías de Cuidados', 'Instructivos de recuperación e higiene', NULL,  TRUE);
+(2, 'Guías de Cuidados', 'Instructivos de recuperación e higiene', NULL, TRUE);
 
--- Subcategorías (asociadas a las categorías anteriores)
+-- 2. Inserción de datos dependientes de nivel 1
 INSERT INTO `SUBCATEGORIA_DOCUMENTO` (`id_subcategoria`, `id_categoria`, `nombre_subcategoria`, `descripcion`, `estado_activo`) VALUES
 (1, 1, 'Consentimiento Quirúrgico', 'Autorización para intervenciones de cirugía', TRUE),
 (2, 2, 'Cuidados Post-Operatorios', 'Instrucciones para cuidados en casa', TRUE);
 
-INSERT INTO `PACIENTE` (`id_paciente`, `cedula`, `nombre`, `apellido`, `email`, `telefono`, `fecha_registro`) VALUES
-(1, '12345678', 'Juan', 'Pérez', 'juan.perez@example.com', '+59899123456', NOW());
