@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `ENCUESTA` (
   `id_encuesta` integer PRIMARY KEY AUTO_INCREMENT,
   `titulo` varchar(100) NOT NULL,
   `descripcion` text,
-  `estado` varchar(30) NOT NULL,
+  `requiere_identificacion` NOT NULL DEFAULT false
   `id_tipo_encuesta` integer NOT NULL,
   `id_funcionario_creador` integer NOT NULL,
   `estado_activo` boolean NOT NULL DEFAULT true
