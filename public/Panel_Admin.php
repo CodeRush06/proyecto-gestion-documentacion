@@ -9,7 +9,7 @@ session_start();
     //exit;
 //} else {
     $rol = $_SESSION['rol' ?? 'administrador'];
-}
+//}
 
 if($rol == 'administrador'){
 // Conexión y listados que usa la página
