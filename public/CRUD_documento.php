@@ -36,8 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" &&
                 $mensaje = "Seleccione un documento";
             } else {
                 $stmt = $pdo->prepare(
-                    "UPDATE DOCUMENTO SET estado = 0
-                     WHERE id_documento = :id AND estado = 1"
+                    "UPDATE DOCUMENTO SET estado_activo = 0
+                     WHERE id_documento = :id AND estado_activo = 1"
                 );
 
                 $stmt->execute(["id" => $id]);
@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" &&
             } else {
                 $sql = "UPDATE DOCUMENTO
                         SET titulo = :titulo, descripcion = :descripcion
-                        WHERE id_documento = :id AND estado = 1";
+                        WHERE id_documento = :id AND estado_activo = 1";
 
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute([
@@ -152,7 +152,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" &&
                     }
 
                     $rutaDestino = $directorio . $nombreArchivo;
-                    $rutaWeb = "Documentos_Archivos/" . $nombreArchivo;
+                    $rutaWeb = "Documentos/" . $nombreArchivo;
 
                     if (!move_uploaded_file(
                         $archivo["tmp_name"],
