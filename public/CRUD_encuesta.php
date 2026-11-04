@@ -14,8 +14,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && in_array($accion, ["crear", "modific
     $id                      = (int) ($_POST["id"] ?? 0);
     $titulo                  = trim($_POST["titulo"] ?? "");
     $descripcion             = trim($_POST["descripcion"] ?? "");
-    $privado                 = isset($_POST["privado"]);   // true si tildó "Mantener privado"
-    $estado                  = $privado ? 0 : 1;           // privado = no visible = desactivado
+    $privado                 = isset($_POST["privado"]); 
+    $estado_activo           =  1;
     $id_tipo_encuesta        = (int) ($_POST["id_tipo_encuesta"] ?? 0);
     $requiere_identificacion = isset($_POST["requiere_identificacion"]) ? 1 : 0;
     $preguntas               = $_POST["preguntas"] ?? [];
@@ -94,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && in_array($accion, ["crear", "modific
             $stmtEnc->execute([
                 "titulo"                  => $titulo,
                 "descripcion"             => $descripcion,
-                "estado"                  => $estado_activo,
+                "estado_activo"                  => $estado_activo,
                 "id_tipo_encuesta"        => $id_tipo_encuesta,
                 "id_funcionario_creador"  => $id_funcionario_creador,
                 "requiere_identificacion" => $requiere_identificacion
