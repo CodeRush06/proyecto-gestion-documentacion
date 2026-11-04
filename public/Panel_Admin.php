@@ -31,8 +31,8 @@ $mensaje_documento    = $_SESSION["mensaje_documento"] ?? "";
 $resultado_documento  = $_SESSION["resultado_documento"] ?? "";
 $mensaje_cat_enc      = $_SESSION["mensaje_cat_enc"] ?? "";
 $resultado_cat_enc    = $_SESSION["resultado_cat_enc"] ?? "";
-$mensaje_formulario   = $_SESSION["mensaje_formulario"] ?? "";
-$resultado_formulario = $_SESSION["resultado_formulario"] ?? "";
+$mensaje_formulario   = $_SESSION["mensaje_encuesta"] ?? "";
+$resultado_formulario = $_SESSION["resultado_encuesta"] ?? "";
 $mensaje_usuario      = $_SESSION["mensaje_usuario"] ?? "";
 $resultado_usuario    = $_SESSION["resultado_usuario"] ?? "";
 }else if($rol == 'medico'){
