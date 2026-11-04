@@ -31,8 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && in_array($accion, ["crear", "modific
             if ($id <= 0) {
                 $mensaje = "Seleccione una encuesta";
             } else {
-                $stmt = $pdo->prepare("UPDATE encuesta SET estado = 0
-                                       WHERE id_encuesta = :id AND estado = 1");
+                $stmt = $pdo->prepare("UPDATE ENCUESTA SET estado_activo = 0
+                                       WHERE id_encuesta = :id AND estado_activo = 1");
                 $stmt->execute(["id" => $id]);
 
                 if ($stmt->rowCount() > 0) {
@@ -61,11 +61,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && in_array($accion, ["crear", "modific
             if ($id <= 0) {
                 $mensaje = "Seleccione una encuesta";
             } else {
-                $sql = "UPDATE encuesta
+                $sql = "UPDATE ENCUESTA
                         SET titulo = :titulo, descripcion = :descripcion,
                             id_tipo_encuesta = :id_tipo_encuesta,
                             requiere_identificacion = :requiere_identificacion
-                        WHERE id_encuesta = :id AND estado = 1";
+                        WHERE id_encuesta = :id AND estado_activo = 1";
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute([
                     "titulo"                  => $titulo,
@@ -88,13 +88,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && in_array($accion, ["crear", "modific
 
             // 1) La encuesta
             $stmtEnc = $pdo->prepare(
-                "INSERT INTO encuesta (titulo, descripcion, estado, id_tipo_encuesta, id_funcionario_creador, requiere_identificacion)
-                 VALUES (:titulo, :descripcion, :estado, :id_tipo_encuesta, :id_funcionario_creador, :requiere_identificacion)"
+                "INSERT INTO ENCUESTA (titulo, descripcion, estado_activo, id_tipo_encuesta, id_funcionario_creador, requiere_identificacion)
+                 VALUES (:titulo, :descripcion, :estado_activo, :id_tipo_encuesta, :id_funcionario_creador, :requiere_identificacion)"
             );
             $stmtEnc->execute([
                 "titulo"                  => $titulo,
                 "descripcion"             => $descripcion,
-                "estado"                  => $estado,
+                "estado"                  => $estado_activo,
                 "id_tipo_encuesta"        => $id_tipo_encuesta,
                 "id_funcionario_creador"  => $id_funcionario_creador,
                 "requiere_identificacion" => $requiere_identificacion
@@ -103,11 +103,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && in_array($accion, ["crear", "modific
 
             // 2) Sentencias reutilizables para preguntas y opciones
             $stmtPreg = $pdo->prepare(
-                "INSERT INTO pregunta (id_encuesta, texto_pregunta, tipo_pregunta, obligatoria, orden)
+                "INSERT INTO PREGUNTA (id_encuesta, texto_pregunta, tipo_pregunta, obligatoria, orden)
                  VALUES (:id_encuesta, :texto_pregunta, :tipo_pregunta, :obligatoria, :orden)"
             );
             $stmtOp = $pdo->prepare(
-                "INSERT INTO opcion_respuesta (id_pregunta, texto_opcion, valor)
+                "INSERT INTO OPCION_RESPUESTA (id_pregunta, texto_opcion, valor)
                  VALUES (:id_pregunta, :texto_opcion, :valor)"
             );
 
