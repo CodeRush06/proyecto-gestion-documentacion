@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && in_array($accion, ["crear", "modific
         // =================================================
         } elseif ($cat_final === null && $sub_final === null) {
             $mensaje = "Seleccione una categoría o subcategoría";
-        } elseif (!isset($_FILES["archivo"]) || $_FILES["archivo"]["error"] !== UPLOAD_ERR_OK) {
+        } elseif (!isset($_FILES["archivo"])) {
             $mensaje = "Falta seleccionar un archivo válido";
         } else {
             $archivo = $_FILES["archivo"];
