@@ -165,7 +165,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" &&
 
                         $sql = "INSERT INTO DOCUMENTO
                                 (titulo, descripcion, id_categoria,
-                                 id_subcategoria, archivo_url, estado)
+                                 id_subcategoria, archivo_url, estado_activo)
                                 VALUES
                                 (:titulo, :descripcion, :id_categoria,
                                  :id_subcategoria, :archivo_url, 1)";
