@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" &&
                 $mensaje = "Seleccione un documento";
             } else {
                 $stmt = $pdo->prepare(
-                    "UPDATE documento SET estado = 0
+                    "UPDATE DOCUMENTO SET estado = 0
                      WHERE id_documento = :id AND estado = 1"
                 );
 
@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" &&
             if ($id <= 0) {
                 $mensaje = "Seleccione un documento";
             } else {
-                $sql = "UPDATE documento
+                $sql = "UPDATE DOCUMENTO
                         SET titulo = :titulo, descripcion = :descripcion
                         WHERE id_documento = :id AND estado = 1";
 
@@ -163,7 +163,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" &&
 
                     } else {
 
-                        $sql = "INSERT INTO documento
+                        $sql = "INSERT INTO DOCUMENTO
                                 (titulo, descripcion, id_categoria,
                                  id_subcategoria, archivo_url, estado)
                                 VALUES
