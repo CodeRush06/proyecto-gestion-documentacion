@@ -17,7 +17,7 @@ if (!$tipoActual) {
     exit;
 }
 
-$sql = "SELECT * FROM ENCUESTA WHERE id_tipo_encuesta = :id AND estado = 1";
+$sql = "SELECT * FROM ENCUESTA WHERE id_tipo_encuesta = :id AND estado_activo = 1";
 $stmt = $pdo->prepare($sql);
 $stmt->execute(["id" => $id_tipo_encuesta]);
 $encuestas = $stmt->fetchAll(PDO::FETCH_ASSOC);
