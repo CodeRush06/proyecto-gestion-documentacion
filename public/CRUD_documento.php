@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 require __DIR__ . '/../src/config/database.php';
