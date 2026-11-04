@@ -162,7 +162,7 @@ foreach (["cat_doc", "subcat_doc", "documento", "cat_enc", "encuesta", "usuario"
               <div class="table-responsive">
                 <table class="table table-striped text-start">
                   <thead>
-                    <tr><th>ID</th><th>Nombre</th><th>Descripcion</th><th>Estado</th></tr>
+                    <tr><th>ID</th><th>Nombre</th><th>Descripcion</th><th>Fecha</th></tr>
                   </thead>
                   <tbody>
                     <?php foreach ($categoria as $cat): ?>
@@ -282,7 +282,7 @@ foreach (["cat_doc", "subcat_doc", "documento", "cat_enc", "encuesta", "usuario"
               <div class="table-responsive">
                 <table class="table table-striped text-start">
                   <thead>
-                    <tr><th>ID</th><th>Nombre</th><th>Descripcion</th><th>Estado</th><th>Categoria de Origen</th></tr>
+                    <tr><th>ID</th><th>Nombre</th><th>Descripcion</th><th>Fecha</th><th>Categoria de Origen</th></tr>
                   </thead>
                   <tbody>
                     <?php foreach ($subcategoria as $scat): ?>
@@ -413,7 +413,7 @@ foreach (["cat_doc", "subcat_doc", "documento", "cat_enc", "encuesta", "usuario"
               <div class="table-responsive">
                 <table class="table table-striped text-start">
                   <thead>
-                    <tr><th>ID</th><th>Nombre</th><th>Descripcion</th><th>Categoria</th><th>Estado</th></tr>
+                    <tr><th>ID</th><th>Nombre</th><th>Descripcion</th><th>Categoria</th><th>Fecha</th></tr>
                   </thead>
                   <tbody>
                     <?php foreach ($titulos as $doc): ?>
@@ -523,7 +523,7 @@ foreach (["cat_doc", "subcat_doc", "documento", "cat_enc", "encuesta", "usuario"
               <div class="table-responsive">
                 <table class="table table-striped text-start">
                   <thead>
-                    <tr><th>ID</th><th>Nombre</th><th>Descripcion</th><th>Estado</th></tr>
+                    <tr><th>ID</th><th>Nombre</th><th>Descripcion</th><th>Fecha</th></tr>
                   </thead>
                   <tbody>
                     <?php foreach ($tipo_encuestas as $enc): ?>
@@ -653,7 +653,7 @@ foreach (["cat_doc", "subcat_doc", "documento", "cat_enc", "encuesta", "usuario"
               <div class="table-responsive">
                 <table class="table table-striped text-start">
                   <thead>
-                    <tr><th>ID</th><th>Titulo</th><th>Descripcion</th><th>Tipo</th><th>Estado</th></tr>
+                    <tr><th>ID</th><th>Titulo</th><th>Descripcion</th><th>Tipo</th><th>Fecha</th></tr>
                   </thead>
                   <tbody>
                     <?php foreach ($encuestas as $f): ?>
@@ -799,7 +799,7 @@ foreach (["cat_doc", "subcat_doc", "documento", "cat_enc", "encuesta", "usuario"
               <div class="table-responsive">
                 <table class="table table-striped text-start">
                   <thead>
-                    <tr><th>ID</th><th>Nombre</th><th>Email</th><th>Usuario</th><th>Estado</th></tr>
+                    <tr><th>ID</th><th>Nombre</th><th>Email</th><th>Usuario</th><th>Fecha</th></tr>
                   </thead>
                   <tbody>
                     <?php foreach ($admin as $u): ?>
@@ -932,7 +932,7 @@ foreach (["cat_doc", "subcat_doc", "documento", "cat_enc", "encuesta", "usuario"
           <div class="table-responsive">
             <table class="table table-striped text-start">
               <thead>
-                <tr><th>ID</th><th>Nombre</th><th>Descripcion</th><th>Categoria</th><th>Estado</th></tr>
+                <tr><th>ID</th><th>Nombre</th><th>Descripcion</th><th>Categoria</th><th>Fecha</th></tr>
               </thead>
               <tbody>
                 <?php foreach ($titulos as $doc): ?>
