@@ -377,7 +377,7 @@ foreach (["cat_doc", "subcat_doc", "documento", "cat_enc", "encuesta", "usuario"
                 <select class="form-select mb-2" name="id" required>
                   <option value="">Seleccione un documento</option>
                   <?php foreach ($titulos as $doc): ?>
-                    <?php if ($doc['estado']): ?>
+                    <?php if ($doc['estado_activo']): ?>
                       <option value="<?= (int) $doc['id_documento'] ?>"><?= htmlspecialchars($doc['titulo']) ?></option>
                     <?php endif; ?>
                   <?php endforeach; ?>
@@ -398,7 +398,7 @@ foreach (["cat_doc", "subcat_doc", "documento", "cat_enc", "encuesta", "usuario"
                 <select class="form-select mb-2" name="id" required>
                   <option value="">Seleccione un documento</option>
                   <?php foreach ($titulos as $doc): ?>
-                    <?php if ($doc['estado']): ?>
+                    <?php if ($doc['estado_activo']): ?>
                       <option value="<?= (int) $doc['id_documento'] ?>"><?= htmlspecialchars($doc['titulo']) ?></option>
                     <?php endif; ?>
                   <?php endforeach; ?>
@@ -431,7 +431,7 @@ foreach (["cat_doc", "subcat_doc", "documento", "cat_enc", "encuesta", "usuario"
                           <span class="text-muted">Sin categoría</span>
                         <?php endif; ?>
                       </td>
-                      <td><?= $doc['estado'] ? 'true' : 'false' ?></td>
+                      <td><?= $doc['estado_activo'] ? 'true' : 'false' ?></td>
                     </tr>
                     <?php endforeach; ?>
                   </tbody>
