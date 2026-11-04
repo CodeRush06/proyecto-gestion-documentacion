@@ -21,17 +21,6 @@ if (!$encuestaActual) {
     exit;
 }
 
-// Registrar el acceso (dispositivo/IP), igual que en documentos
-$stmtAcceso = $pdo->prepare(
-    "INSERT INTO ACCESO_ENCUESTA (id_encuesta, id_paciente, dispositivo, ip_address, fecha_acceso)
-     VALUES (:id_encuesta, :id_paciente, :dispositivo, :ip_address, NOW())"
-);
-$stmtAcceso->execute([
-    "id_encuesta"  => $id_encuesta,
-    "id_paciente"  => null,
-    "dispositivo"  => $_SERVER["HTTP_USER_AGENT"] ?? null,
-    "ip_address"   => $_SERVER["REMOTE_ADDR"] ?? null
-]);
 
 $sql = "SELECT id_pregunta, texto_pregunta, tipo_pregunta, obligatoria, orden
         FROM PREGUNTA
