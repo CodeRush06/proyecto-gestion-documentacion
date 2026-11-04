@@ -143,11 +143,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" &&
                     $nombreArchivo = bin2hex(random_bytes(16)) .
                                      "." . $tiposPermitidos[$tipoReal];
 
-                    $directorio = __DIR__ . "/Documentos_Archivos/";
+                    $directorio = __DIR__ . "/Documentos/";
 
                     if (!is_dir($directorio)) {
                         throw new RuntimeException(
-                            "No existe el directorio Documentos_Archivos"
+                            "No existe el directorio Documentos"
                         );
                     }
 
