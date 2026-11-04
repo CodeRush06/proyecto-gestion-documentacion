@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `ENCUESTA` (
   `id_encuesta` integer PRIMARY KEY AUTO_INCREMENT,
   `titulo` varchar(100) NOT NULL,
   `descripcion` text,
-  `requiere_identificacion` NOT NULL DEFAULT false,
+  `requiere_identificacion` boolean NOT NULL DEFAULT false,
   `id_tipo_encuesta` integer NOT NULL,
   `id_funcionario_creador` integer NOT NULL,
   `estado_activo` boolean NOT NULL DEFAULT true
@@ -48,8 +48,10 @@ CREATE TABLE IF NOT EXISTS `PREGUNTA` (
   `tipo_pregunta` varchar(50) NOT NULL,
   `orden` integer NOT NULL,
   `obligatoria` boolean NOT NULL DEFAULT false,
-  `estado_activo` boolean NOT NULL DEFAULT true
+  `estado_activo` boolean NOT NULL DEFAULT true,
+  UNIQUE KEY `uk_encuesta_orden` (`id_encuesta`, `orden`)
 );
+
 
 CREATE TABLE IF NOT EXISTS `OPCION_RESPUESTA` (
   `id_opcion` integer PRIMARY KEY AUTO_INCREMENT,
@@ -106,8 +108,6 @@ CREATE TABLE IF NOT EXISTS `DOCUMENTO` (
   `id_funcionario_creador` integer NULL
 );
 
-DROP INDEX IF EXISTS `PREGUNTA_index_0` ON `PREGUNTA`;
-CREATE UNIQUE INDEX `PREGUNTA_index_0` ON `PREGUNTA` (`id_encuesta`, `orden`);
 
 -- Claves foráneas
 ALTER TABLE `ENCUESTA` ADD FOREIGN KEY (`id_tipo_encuesta`) REFERENCES `TIPO_ENCUESTA` (`id_tipo_encuesta`);
