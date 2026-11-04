@@ -67,6 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && in_array($accion, ["crear", "modific
         // CREAR
         // =================================================
         } else {
+            estado_activo = 1;
             $sql = "INSERT INTO TIPO_ENCUESTA (nombre_tipo, descripcion, estado_activo)
                     VALUES (:nombre_tipo, :descripcion, :estado_activo)";
             $stmt = $pdo->prepare($sql);
