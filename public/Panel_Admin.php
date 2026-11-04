@@ -44,7 +44,7 @@ $mensaje_documento    = $_SESSION["mensaje_documento"] ?? "";
 $resultado_documento  = $_SESSION["resultado_documento"] ?? "";
 }
 // Se borran de la sesión para que no reaparezcan al recargar
-foreach (["cat_doc", "subcat_doc", "documento", "cat_enc", "formulario", "usuario"] as $k) {
+foreach (["cat_doc", "subcat_doc", "documento", "cat_enc", "encuesta", "usuario"] as $k) {
     unset($_SESSION["mensaje_$k"], $_SESSION["accion_$k"], $_SESSION["resultado_$k"]);
 }
 ?>
