@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && in_array($accion, ["crear", "modific
     $privado                 = isset($_POST["privado"]); 
     $estado_activo           =  1;
     $id_tipo_encuesta        = (int) ($_POST["id_tipo_encuesta"] ?? 0);
-    $requiere_identificacion = isset($_POST["requiere_identificacion"]) ? 1 : 0;
+    $requiere_identificacio = isset($_POST["requiere_cedula"]) ? 1 : 0;
     $preguntas               = $_POST["preguntas"] ?? [];
 
     // TEMPORAL hasta que exista login: id fijo para pruebas
