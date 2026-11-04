@@ -64,7 +64,6 @@ CREATE TABLE IF NOT EXISTS `OPCION_RESPUESTA` (
 CREATE TABLE IF NOT EXISTS `RESPUESTA_ENCUESTA` (
   `id_respuesta` integer PRIMARY KEY AUTO_INCREMENT,
   `id_encuesta` integer NOT NULL,
-  `id_paciente` integer NOT NULL,
   `fecha_respuesta` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `anonima` boolean NOT NULL DEFAULT false
 );
