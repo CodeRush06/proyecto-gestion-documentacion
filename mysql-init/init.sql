@@ -20,16 +20,6 @@ CREATE TABLE IF NOT EXISTS `ADMINISTRATIVO` (
   `estado_activo` boolean NOT NULL DEFAULT true
 );
 
-CREATE TABLE IF NOT EXISTS `ENCUESTA` (
-  `id_encuesta` integer PRIMARY KEY AUTO_INCREMENT,
-  `titulo` varchar(100) NOT NULL,
-  `descripcion` text,
-  `requiere_identificacion` boolean NOT NULL DEFAULT false,
-  `id_tipo_encuesta` integer NOT NULL,
-  `id_funcionario_creador` integer NOT NULL,
-  `estado_activo` boolean NOT NULL DEFAULT true
-);
-
 CREATE TABLE IF NOT EXISTS `PACIENTE` (
   `id_paciente` integer PRIMARY KEY AUTO_INCREMENT,
   `cedula` varchar(20) UNIQUE NOT NULL,
@@ -39,41 +29,6 @@ CREATE TABLE IF NOT EXISTS `PACIENTE` (
   `telefono` varchar(20),
   `fecha_registro` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `estado_activo` boolean NOT NULL DEFAULT true
-);
-
-CREATE TABLE IF NOT EXISTS `PREGUNTA` (
-  `id_pregunta` integer PRIMARY KEY AUTO_INCREMENT,
-  `id_encuesta` integer NOT NULL,
-  `texto_pregunta` text NOT NULL,
-  `tipo_pregunta` varchar(50) NOT NULL,
-  `orden` integer NOT NULL,
-  `obligatoria` boolean NOT NULL DEFAULT false,
-  `estado_activo` boolean NOT NULL DEFAULT true,
-  UNIQUE KEY `uk_encuesta_orden` (`id_encuesta`, `orden`)
-);
-
-
-CREATE TABLE IF NOT EXISTS `OPCION_RESPUESTA` (
-  `id_opcion` integer PRIMARY KEY AUTO_INCREMENT,
-  `id_pregunta` integer NOT NULL,
-  `texto_opcion` varchar(200) NOT NULL,
-  `valor` varchar(100),
-  `estado_activo` boolean NOT NULL DEFAULT true
-);
-
-CREATE TABLE IF NOT EXISTS `RESPUESTA_ENCUESTA` (
-  `id_respuesta` integer PRIMARY KEY AUTO_INCREMENT,
-  `id_encuesta` integer NOT NULL,
-  `fecha_respuesta` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `anonima` boolean NOT NULL DEFAULT true
-);
-
-CREATE TABLE IF NOT EXISTS `RESPUESTA_DETALLE` (
-  `id_detalle` integer PRIMARY KEY AUTO_INCREMENT,
-  `id_respuesta_encuesta` integer NOT NULL,
-  `id_pregunta` integer NOT NULL,
-  `id_opcion` integer NULL, 
-  `texto_libre` text
 );
 
 CREATE TABLE IF NOT EXISTS `CATEGORIA_DOCUMENTO` (
@@ -90,8 +45,61 @@ CREATE TABLE IF NOT EXISTS `SUBCATEGORIA_DOCUMENTO` (
   `nombre_subcategoria` varchar(100) NOT NULL,
   `descripcion` text,
   `estado_activo` boolean NOT NULL DEFAULT true,
-  CONSTRAINT `fk_subcat_cat` FOREIGN KEY (`id_categoria`) 
-    REFERENCES `CATEGORIA_DOCUMENTO` (`id_categoria`)
+  CONSTRAINT `fk_subcat_cat` FOREIGN KEY (`id_categoria`) REFERENCES `CATEGORIA_DOCUMENTO` (`id_categoria`)
+);
+
+CREATE TABLE IF NOT EXISTS `ENCUESTA` (
+  `id_encuesta` integer PRIMARY KEY AUTO_INCREMENT,
+  `titulo` varchar(100) NOT NULL,
+  `descripcion` text,
+  `requiere_identificacion` boolean NOT NULL DEFAULT false,
+  `id_tipo_encuesta` integer NOT NULL,
+  `id_funcionario_creador` integer NOT NULL,
+  `estado_activo` boolean NOT NULL DEFAULT true,
+  CONSTRAINT `fk_encuesta_tipo` FOREIGN KEY (`id_tipo_encuesta`) REFERENCES `TIPO_ENCUESTA` (`id_tipo_encuesta`),
+  CONSTRAINT `fk_encuesta_func` FOREIGN KEY (`id_funcionario_creador`) REFERENCES `ADMINISTRATIVO` (`id_funcionario`)
+);
+
+CREATE TABLE IF NOT EXISTS `PREGUNTA` (
+  `id_pregunta` integer PRIMARY KEY AUTO_INCREMENT,
+  `id_encuesta` integer NOT NULL,
+  `texto_pregunta` text NOT NULL,
+  `tipo_pregunta` varchar(50) NOT NULL,
+  `orden` integer NOT NULL,
+  `obligatoria` boolean NOT NULL DEFAULT false,
+  `estado_activo` boolean NOT NULL DEFAULT true,
+  UNIQUE KEY `uk_encuesta_orden` (`id_encuesta`, `orden`),
+  CONSTRAINT `fk_pregunta_encuesta` FOREIGN KEY (`id_encuesta`) REFERENCES `ENCUESTA` (`id_encuesta`)
+);
+
+CREATE TABLE IF NOT EXISTS `OPCION_RESPUESTA` (
+  `id_opcion` integer PRIMARY KEY AUTO_INCREMENT,
+  `id_pregunta` integer NOT NULL,
+  `texto_opcion` varchar(200) NOT NULL,
+  `valor` varchar(100),
+  `estado_activo` boolean NOT NULL DEFAULT true,
+  CONSTRAINT `fk_opcion_pregunta` FOREIGN KEY (`id_pregunta`) REFERENCES `PREGUNTA` (`id_pregunta`)
+);
+
+CREATE TABLE IF NOT EXISTS `RESPUESTA_ENCUESTA` (
+  `id_respuesta` integer PRIMARY KEY AUTO_INCREMENT,
+  `id_encuesta` integer NOT NULL,
+  `id_paciente` integer, -- CORREGIDO: Se agregó esta columna para que la FK sea válida
+  `fecha_respuesta` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `anonima` boolean NOT NULL DEFAULT true,
+  CONSTRAINT `fk_respuesta_encuesta` FOREIGN KEY (`id_encuesta`) REFERENCES `ENCUESTA` (`id_encuesta`),
+  CONSTRAINT `fk_respuesta_paciente` FOREIGN KEY (`id_paciente`) REFERENCES `PACIENTE` (`id_paciente`)
+);
+
+CREATE TABLE IF NOT EXISTS `RESPUESTA_DETALLE` (
+  `id_detalle` integer PRIMARY KEY AUTO_INCREMENT,
+  `id_respuesta_encuesta` integer NOT NULL,
+  `id_pregunta` integer NOT NULL,
+  `id_opcion` integer NULL, 
+  `texto_libre` text,
+  CONSTRAINT `fk_detalle_respuesta` FOREIGN KEY (`id_respuesta_encuesta`) REFERENCES `RESPUESTA_ENCUESTA` (`id_respuesta`),
+  CONSTRAINT `fk_detalle_pregunta` FOREIGN KEY (`id_pregunta`) REFERENCES `PREGUNTA` (`id_pregunta`),
+  CONSTRAINT `fk_detalle_opcion` FOREIGN KEY (`id_opcion`) REFERENCES `OPCION_RESPUESTA` (`id_opcion`)
 );
 
 CREATE TABLE IF NOT EXISTS `DOCUMENTO` (
@@ -104,28 +112,11 @@ CREATE TABLE IF NOT EXISTS `DOCUMENTO` (
   `estado_activo` boolean NOT NULL DEFAULT true,
   `id_subcategoria` integer NULL,
   `id_categoria` integer NULL,
-  `id_funcionario_creador` integer NULL
+  `id_funcionario_creador` integer NULL,
+  CONSTRAINT `fk_doc_subcat` FOREIGN KEY (`id_subcategoria`) REFERENCES `SUBCATEGORIA_DOCUMENTO` (`id_subcategoria`),
+  CONSTRAINT `fk_doc_cat` FOREIGN KEY (`id_categoria`) REFERENCES `CATEGORIA_DOCUMENTO` (`id_categoria`),
+  CONSTRAINT `fk_doc_func` FOREIGN KEY (`id_funcionario_creador`) REFERENCES `ADMINISTRATIVO` (`id_funcionario`)
 );
-
-
--- Claves foráneas
-ALTER TABLE `ENCUESTA` ADD FOREIGN KEY (`id_tipo_encuesta`) REFERENCES `TIPO_ENCUESTA` (`id_tipo_encuesta`);
-ALTER TABLE `ENCUESTA` ADD FOREIGN KEY (`id_funcionario_creador`) REFERENCES `ADMINISTRATIVO` (`id_funcionario`);
-
-ALTER TABLE `PREGUNTA` ADD FOREIGN KEY (`id_encuesta`) REFERENCES `ENCUESTA` (`id_encuesta`);
-
-ALTER TABLE `OPCION_RESPUESTA` ADD FOREIGN KEY (`id_pregunta`) REFERENCES `PREGUNTA` (`id_pregunta`);
-
-ALTER TABLE `RESPUESTA_ENCUESTA` ADD FOREIGN KEY (`id_encuesta`) REFERENCES `ENCUESTA` (`id_encuesta`);
-ALTER TABLE `RESPUESTA_ENCUESTA` ADD FOREIGN KEY (`id_paciente`) REFERENCES `PACIENTE` (`id_paciente`);
-
-ALTER TABLE `RESPUESTA_DETALLE` ADD FOREIGN KEY (`id_respuesta_encuesta`) REFERENCES `RESPUESTA_ENCUESTA` (`id_respuesta`);
-ALTER TABLE `RESPUESTA_DETALLE` ADD FOREIGN KEY (`id_pregunta`) REFERENCES `PREGUNTA` (`id_pregunta`);
-ALTER TABLE `RESPUESTA_DETALLE` ADD FOREIGN KEY (`id_opcion`) REFERENCES `OPCION_RESPUESTA` (`id_opcion`);
-
-ALTER TABLE `DOCUMENTO` ADD FOREIGN KEY (`id_subcategoria`) REFERENCES `SUBCATEGORIA_DOCUMENTO` (`id_subcategoria`);
-ALTER TABLE `DOCUMENTO` ADD FOREIGN KEY (`id_categoria`) REFERENCES `CATEGORIA_DOCUMENTO` (`id_categoria`);
-ALTER TABLE `DOCUMENTO` ADD FOREIGN KEY (`id_funcionario_creador`) REFERENCES `ADMINISTRATIVO` (`id_funcionario`);
 
 INSERT INTO `ADMINISTRATIVO` (`id_funcionario`, `nombre`, `apellido`, `email`, `usuario`, `contrasena`, `fecha_registro`) VALUES
 (1, 'Admin', 'Sistema', 'admin@hospital.com', 'admin', '$2a$12$eImiTXuWVxfM37uY4JANjOL.8/OHqA4/y1z2H.g0B5eXNqXz9G', NOW());
