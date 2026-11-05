@@ -4,11 +4,11 @@
 // =====================================================
 session_start();
 
-if (!isset($_SESSION['rol'])) {
+//if (!isset($_SESSION['rol'])) {
    // header("Location: /public/login.php");
    // exit;
     $rol == 'administrador';
-} 
+//} 
 
 if($rol == 'administrador'){
 // Conexión y listados que usa la página
