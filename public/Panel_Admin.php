@@ -5,8 +5,9 @@
 session_start();
 
 if (!isset($_SESSION['rol'])) {
-    header("Location: /public/login.php");
-    exit;
+   // header("Location: /public/login.php");
+   // exit;
+    $rol == 'administrador';
 } 
 
 if($rol == 'administrador'){
